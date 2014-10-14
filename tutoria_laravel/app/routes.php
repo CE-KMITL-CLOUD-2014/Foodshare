@@ -13,30 +13,10 @@
 
 Route::get('/', function()
 {
-	return 'HEllO';
-});
-/* 
-
-Unauthoticated group
-
-*/
-Route::group(array('before' => 'guest'),function(){
-	
-	/*
-	CSRF protection group
-	
-	*/
-	Route::group(array('before' => 'csrf'),function(){
-	
-	});
-	
-	Route::get('account/create',array(
-		'as' => 'account-create',
-		'uses' => 'AccountController@getCreate'
-	));
-	
-	Route::get('amanda/create',function(){
-		return 'hello';
-	});
+	return View::make('hello');
 });
 
+Route::get('/test', function()
+{
+	return View::make('test');
+});
