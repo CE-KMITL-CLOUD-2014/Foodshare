@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'sqlsrv',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -76,10 +76,10 @@ return array(
 
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'host'     => 'tcp:inhpq4s7ug.database.windows.net,1433',
+			'database' => 'foodshare',
+			'username' => 'foodshare@inhpq4s7ug',
+			'password' => 'Gunslinger1234',
 			'prefix'   => '',
 		),
 

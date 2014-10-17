@@ -15,3 +15,16 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/signin', function()
+{
+	return View::make('signin');
+});
+Route::get('/db', function()
+{
+	return View::make('db');
+});
+Route::get('/register', array(
+	'as' => 'register', 
+	'uses' => 'AuthController@register'
+));
