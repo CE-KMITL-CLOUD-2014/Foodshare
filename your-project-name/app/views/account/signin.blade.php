@@ -24,17 +24,26 @@
   </head>
 
   <body>
-
+	
     <div class="container">
-
-      <form class="form-signin" role="form">
+@if(Session::has('global'))
+		<p> {{ Session::get('global')}} </p>
+	@endif
+      <form class="form-signin" action="{{ URL::route('signin-post') }}" method="post" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
+        <input type="email" name="email" class="form-control" {{(Input::old('email')) ? ' value="' . Input::old('email') . '"' : '' }} placeholder="Email address" required autofocus>
+		@if($errors->has('email'))
+			{{ $errors->first('email') }}
+		@endif
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        @if($errors->has('password'))
+			{{$errors->first('password') }}
+		@endif
+		<!--<label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
-        </label>
+        </label>-->
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		{{Form::token()}}
       </form>
 
     </div> <!-- /container -->

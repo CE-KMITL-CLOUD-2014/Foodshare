@@ -15,15 +15,24 @@ Route::get('/', array(
 	'as' => 'home', 
 	'uses' => 'HomeController@showWelcome'
 ));
-Route::get('/signin', function()
-{
-	return View::make('account.signin');
-});
+
 Route::get('/db', function()
 {
 	return View::make('db');
 });
-
+/*
+| Authentication filter
+*/
+Route::group(array('before' => 'auth' ), function() {
+	/*
+	| sign out (GET)
+	*/
+	
+	Route::get('/signout',array(
+		'as' => 'signout',
+		'uses' => 'AuthController@getSignout'
+	));
+});
 /*
 Unauthentication group
 */
@@ -37,17 +46,32 @@ Route::group(array('before' => 'guest'), function(){
 		| Create account(POST)
 		*/
 		Route::post('/register', array(
-		'as' => 'register', 
-		'uses' => 'AuthController@postregister'
+		'as' => 'register-post', 
+		'uses' => 'AuthController@postRegister'
+		));
+		
+		/*
+		| Signin (POST)
+		*/
+		Route::post('/signin', array(
+		'as' => 'signin-post', 
+		'uses' => 'AuthController@postSignin'
 		));
 	});
+	/*
+	| Sign in (GET)
+	*/
+	Route::get('/signin', array(
+	'as' => 'signin-get', 
+	'uses' => 'AuthController@getSignin'
+	));
 	
 	/*
-	| Create account 
+	| Create account (GET)
 	*/
 	Route::get('/register', array(
-	'as' => 'register', 
-	'uses' => 'AuthController@getregister'
+	'as' => 'register-get', 
+	'uses' => 'AuthController@getRegister'
 	));
 	
 });

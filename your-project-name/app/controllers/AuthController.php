@@ -1,11 +1,43 @@
 <?php
 
 class AuthController extends BaseController {
-	public function getregister() {
+
+	public function getSignin(){
+		return View::make('account.signin');
+	}
+	
+	public function postSignin(){
+		$validator = Validator::make(Input::all(),
+			array(
+				'email' => 'required|email',
+				'password' => 'required'
+			)
+		);
+		if($validator->fails()){
+			return Redirect::route('signin-get')
+				->withErrors($validator)
+				->withInput();
+			
+		}else{
+			$email=Input::get('email');
+			$password = Input::get('password');
+			$auth=Auth::attempt(['email' => $email, 'password' => $password]);
+			
+			if($auth){
+				return Redirect::intended('/');
+			}else{
+				return Redirect::route('signin-get')
+					->with('global','Email or Password error');
+			}
+		}
+		return Redirect::route('signin-get')
+			->with('global', 'There was a problem signin you in');
+	}
+	public function getRegister() {
 	
 	return View::make('account.register');
 	}
-	public function postregister()	{
+	public function postRegister()	{
 		
 		$validator = Validator::make(Input::all(),
 			array(
@@ -16,7 +48,7 @@ class AuthController extends BaseController {
 		);
 		
 		if($validator->fails()){
-			return Redirect::route('register')
+			return Redirect::route('register-get')
 				->withErrors($validator)
 				->withInput();
 		}else{
@@ -46,6 +78,9 @@ class AuthController extends BaseController {
 		}
 		
 	}
-		
+	public function getSignout(){
+		Auth::logout();
+		return Redirect::route('home');
+	}	
 		
 }

@@ -28,7 +28,7 @@
 	
     <div class="container">
 		
-      <form class="form-signin" action="{{ URL::route('register') }} "method="post" ole="form">
+      <form class="form-signin" action="{{ URL::route('register-post') }} "method="post" role="form">
         <h2 class="form-signin-heading">Create an account</h2>
         <input type="email" name="email" class="form-control" {{(Input::old('email')) ? ' value="' . e(Input::old('email')) . '"' : '' }} placeholder="Email address" required autofocus>
        @if($errors->has('email'))

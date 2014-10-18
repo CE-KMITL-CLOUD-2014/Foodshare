@@ -17,6 +17,10 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+		/*if(Auth::check())
+			return View::make('layout.home');
+		else
+			return Redirect::route('signin-get');*/
 		return View::make('layout.home');
 	}
 
