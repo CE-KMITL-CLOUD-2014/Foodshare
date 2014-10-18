@@ -11,20 +11,43 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-
+Route::get('/', array(
+	'as' => 'home', 
+	'uses' => 'HomeController@showWelcome'
+));
 Route::get('/signin', function()
 {
-	return View::make('signin');
+	return View::make('account.signin');
 });
 Route::get('/db', function()
 {
 	return View::make('db');
 });
-Route::get('/register', array(
+
+/*
+Unauthentication group
+*/
+Route::group(array('before' => 'guest'), function(){
+	
+	/*
+	| CSRF Protection group
+	*/
+	Route::group(array('before' => 'csrf' ), function(){
+		/*
+		| Create account(POST)
+		*/
+		Route::post('/register', array(
+		'as' => 'register', 
+		'uses' => 'AuthController@postregister'
+		));
+	});
+	
+	/*
+	| Create account 
+	*/
+	Route::get('/register', array(
 	'as' => 'register', 
-	'uses' => 'AuthController@register'
-));
+	'uses' => 'AuthController@getregister'
+	));
+	
+});
