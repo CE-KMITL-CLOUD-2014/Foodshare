@@ -39,9 +39,9 @@
         @if($errors->has('password'))
 			{{$errors->first('password') }}
 		@endif
-		<!--<label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>-->
+		<label class="checkbox">
+          <input type="checkbox" name="remember" > Remember me
+        </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		{{Form::token()}}
       </form>

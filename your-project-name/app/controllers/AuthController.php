@@ -21,7 +21,8 @@ class AuthController extends BaseController {
 		}else{
 			$email=Input::get('email');
 			$password = Input::get('password');
-			$auth=Auth::attempt(['email' => $email, 'password' => $password]);
+			$remember=(Input::has('remember')) ? true : false ;
+			$auth=Auth::attempt(['email' => $email, 'password' => $password], $remember);
 			
 			if($auth){
 				return Redirect::intended('/');

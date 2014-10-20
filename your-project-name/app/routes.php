@@ -15,11 +15,11 @@ Route::get('/', array(
 	'as' => 'home', 
 	'uses' => 'HomeController@showWelcome'
 ));
+Route::get('/user/{email}', array (
+	'as' => 'profile-user',
+	'uses' => 'ProfileController@user'
+));
 
-Route::get('/db', function()
-{
-	return View::make('db');
-});
 /*
 | Authentication filter
 */
