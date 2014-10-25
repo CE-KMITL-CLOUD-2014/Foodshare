@@ -8,7 +8,7 @@ class ProfileController extends BaseController {
 			return View::make('profile.user')
 				->with('user',$user);
 		}
-		//return App::abort(404);
+		return App::abort(404);
 		
 		
 		

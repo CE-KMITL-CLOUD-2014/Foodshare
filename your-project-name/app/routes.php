@@ -20,6 +20,19 @@ Route::get('/user/{email}', array (
 	'uses' => 'ProfileController@user'
 ));
 
+Route::get('/image', array (
+	'as' => 'image-get',
+	'uses' => 'ImageController@home'
+));
+
+Route::post('/image', array (
+	'as' => 'image-post',
+	'uses' => 'ImageController@uploadimage'
+));
+
+Route::get('/detail', function(){
+	return View::make('detail');
+});
 /*
 | Authentication filter
 */

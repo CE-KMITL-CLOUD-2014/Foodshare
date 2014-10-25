@@ -39,9 +39,12 @@
 		@if(Auth::check())
 			<h1>Hello, {{ Auth::user()->ID }}</h1>	
 			<a href="{{ URL::route('signout') }}" >sign out </a>
+			
 		@else
 			<h1>Tests</h1>
-			<a href="{{ URL::route('signin-get') }}" >sign in </a>
+			<a href="{{ URL::route('signin-get') }}" >sign in <br> </a>
+			<a href="{{ URL::route('register-get') }}" >register </a>
+		
 		@endif
 		
 	</div>
@@ -49,5 +52,6 @@
 	@if(Session::has('global'))
 		<p> {{ Session::get('global')}} </p>
 	@endif
+	
 </body>
 </html>

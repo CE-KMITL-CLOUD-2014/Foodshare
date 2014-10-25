@@ -28,7 +28,7 @@
     <div class="container">
 @if(Session::has('global'))
 		<p> {{ Session::get('global')}} </p>
-	@endif
+@endif
       <form class="form-signin" action="{{ URL::route('signin-post') }}" method="post" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="email" name="email" class="form-control" {{(Input::old('email')) ? ' value="' . Input::old('email') . '"' : '' }} placeholder="Email address" required autofocus>
