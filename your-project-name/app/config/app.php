@@ -121,7 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-             'Intervention\Image\ImageServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 	),
 
 	/*
@@ -189,7 +189,10 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Image' => 'Intervention\Image\Facades\Image',
-		
+		'ServicesBuilder' => 'WindowsAzure\Common\ServicesBuilder',
+		'CreateContainerOptions' => 'WindowsAzure\Blob\Models\CreateContainerOptions',
+		'PublicAccessType' => 'WindowsAzure\Blob\Models\PublicAccessType',
+		'ServiceException' => 'WindowsAzure\Common\ServiceException',
 	),
 
 );

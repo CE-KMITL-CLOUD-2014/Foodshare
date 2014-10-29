@@ -30,6 +30,17 @@ Route::post('/image', array (
 	'uses' => 'ImageController@uploadimage'
 ));
 
+Route::get('/blob', array (
+	'as' => 'blob-get',
+	'uses' => 'ImageController@home'
+));
+
+Route::post('/blob', array (
+	'as' => 'blob-post',
+	'uses' => 'ImageController@imageblob'
+));
+
+
 Route::get('/detail', function(){
 	return View::make('detail');
 });
