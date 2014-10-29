@@ -8,7 +8,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-   
+   <!--Jquery-->
+   <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
@@ -42,6 +43,7 @@
 		@if($errors->has('password_again'))
 			{{$errors->first('password_again')}}
 	    @endif
+				
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
 		{{ Form::token() }}
       </form>
