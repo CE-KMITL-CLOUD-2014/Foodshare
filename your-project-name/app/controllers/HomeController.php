@@ -21,7 +21,7 @@ class HomeController extends BaseController {
 			return View::make('layout.home');
 		else
 			return Redirect::route('signin-get');*/
-		return View::make('layout.home');
+		return View::make('layout.home');  //change from 'layout.home' to profile.UserProfile
 	}
 
 }

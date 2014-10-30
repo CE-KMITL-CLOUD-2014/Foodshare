@@ -99,3 +99,24 @@ Route::group(array('before' => 'guest'), function(){
 	));
 	
 });
+/////Order//////
+Route::get('/Order3', array(
+	'as' => 'Order-get', 
+	'uses' => 'OrderController@getOrder'
+));
+Route::get('/Order2',array(
+	'as' => 'Order-menu',
+	'uses' => 'OrderController@menuOrder'
+));
+Route::get('/Order1',array(
+	'as' => 'Order-show',
+	'uses' => 'OrderController@showOrder'
+));
+Route::get('/Reserve2', array(
+	'as' => 'Reserve-get', 
+	'uses' => 'ReserveController@getReserve'
+));
+Route::get('/Reserve1', array(
+	'as' => 'Reserve-show', 
+	'uses' => 'ReserveController@showReserve'
+));

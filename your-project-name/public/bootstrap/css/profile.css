@@ -1,0 +1,12 @@
+body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+}
+.set-image{
+	width: 320px;
+	padding: 10px;
+	border: 5px solid gray;
+	position: fixed;
+	left:120px;
+}
