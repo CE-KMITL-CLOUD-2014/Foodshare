@@ -6,7 +6,7 @@ class OrderController extends BaseController {
 		return View::make('Order.OrderForm');	
 	}
 	public function setOrder(){
-		return View::make('Form.SetOrder');
+		return View::make('Order.setOrder');
 	}
 	public function showOrder(){
 		return View::make('Order.AllOrderShop');

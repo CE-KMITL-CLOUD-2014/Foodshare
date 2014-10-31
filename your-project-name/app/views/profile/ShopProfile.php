@@ -1,57 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-   
-
-    <!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
-
-
-    <!-- Custom styles for this template -->
-	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/register.css') }}">
-
-
-    
-
-   
-  </head>
-<body>
-  <head>
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collaspse" data-toggle="collaspe" data-target="#bs-example-navbar-collaspe-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand">Profile</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <a href="{{URL::route('Order-get')}}" type="Order" class="btn btn-default navbar-btn">Setting Order</a>
-                <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
-            <a href="{{URL::route('Reserve-get')}}" type="Reserve" class="btn btn-primary navbar-btn">Setting Reserve</a>
-                <button type="Review" class="btn btn-default">Watch Review</button>
-                <button type="Shop" class="btn btn-default">Notification</button>
-            <form class="navbar-form navbar-right" role="search">
-                <button type="Edit" class="btn btn-default">Edit</button>
-                <button type="logout" class="btn btn-default">Logout</button>
-            </form>
-        </div><!-- /.container-fluid -->
+@extends("layout.mainshop")
+@section("content")
+   <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4 col-md-4">
+          <img src="#" >
+          <p>This layout to show shop profile picture</p>
         </div>
-      </nav>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </head>
-
-</body>
-</html>
+        <div class="col-xs-4 col-md-8">
+          <button type="AllMenu" class="btn btn-primary">ShowAllMenu</button>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies sapien quam, id tincidunt libero maximus a. Mauris dapibus sed ex ut ornare. Duis varius arcu nec leo fermentum, sit amet convallis orci sollicitudin. Proin pellentesque, massa id tristique tempor, risus mi aliquet risus, at convallis nibh sapien id lacus. Sed nec sem dignissim, malesuada justo eget, tincidunt dolor. Curabitur sed leo efficitur, varius enim id, venenatis velit. Nullam vehicula ut ipsum viverra suscipit. Donec justo ipsum, volutpat sit amet feugiat eu, elementum in orci. Aenean ut ex sit amet nisi egestas interdum. Vestibulum ultrices molestie tortor in tempor. Nullam tincidunt venenatis libero, nec sodales tellus finibus sit amet. Nullam at felis sed sapien fringilla rhoncus id venenatis odio.</p>
+        </div>
+      </div>
+    </div>
+@stop

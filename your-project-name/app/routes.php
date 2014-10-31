@@ -15,6 +15,7 @@ Route::get('/', array(
 	'as' => 'home', 
 	'uses' => 'HomeController@showWelcome'
 ));
+
 Route::get('/user/{email}', array (
 	'as' => 'profile-user',
 	'uses' => 'ProfileController@user'
@@ -104,19 +105,49 @@ Route::get('/Order3', array(
 	'as' => 'Order-get', 
 	'uses' => 'OrderController@getOrder'
 ));
+
 Route::get('/Order2',array(
 	'as' => 'Order-menu',
 	'uses' => 'OrderController@menuOrder'
 ));
+
 Route::get('/Order1',array(
 	'as' => 'Order-show',
 	'uses' => 'OrderController@showOrder'
 ));
+Route::get('/shopOrder1',array(
+	'as' => 'Order-set',
+	'uses' => 'OrderController@setOrder'
+));
+
 Route::get('/Reserve2', array(
 	'as' => 'Reserve-get', 
 	'uses' => 'ReserveController@getReserve'
 ));
+
 Route::get('/Reserve1', array(
 	'as' => 'Reserve-show', 
 	'uses' => 'ReserveController@showReserve'
 ));
+
+Route::get('/Review',array(
+	'as' => 'Review-get',
+	'uses' => 'ReviewController@getReview'
+));
+
+Route::get('/Menu',array(
+	'as' => 'Menu-get',
+	'uses' => 'MenuController@getMenu'
+
+));
+
+Route::get('/Edit',array(
+	'as' => 'Edit-get',
+	'uses' => 'EditController@getEdit'
+
+));
+
+
+Route::get('/shopuser', function(){
+	return View::make('profile.ShopProfile');
+});
