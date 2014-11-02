@@ -130,6 +130,10 @@ Route::get('/Order3', array(
 	'as' => 'Order-get', 
 	'uses' => 'OrderController@getOrder'
 ));
+Route::post('/Order3', array(
+		'as' => 'Order-post', 
+		'uses' => 'OrderController@postOrder'
+));
 
 Route::get('/Order2',array(
 	'as' => 'Order-menu',
@@ -148,6 +152,11 @@ Route::get('/shopOrder1',array(
 Route::get('/Reserve2', array(
 	'as' => 'Reserve-get', 
 	'uses' => 'ReserveController@getReserve'
+));
+
+Route::post('/Reserve2', array(
+	'as' => 'Reserve-post', 
+	'uses' => 'ReserveController@postReserve'
 ));
 
 Route::get('/Reserve1', array(
