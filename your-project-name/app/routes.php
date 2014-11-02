@@ -10,15 +10,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/', array(
-	'as' => 'home', 
-	'uses' => 'HomeController@showWelcome'
-));
-
-Route::get('/user/{email}', array (
-	'as' => 'profile-user',
-	'uses' => 'ProfileController@user'
+Route::get('/mail', array (
+	'as' => 'mail',
+	'uses' => 'EmailController@home'
 ));
 
 Route::get('/image', array (
@@ -42,9 +36,6 @@ Route::post('/blob', array (
 ));
 
 
-Route::get('/detail', function(){
-	return View::make('detail');
-});
 /*
 | Authentication filter
 */
@@ -56,6 +47,32 @@ Route::group(array('before' => 'auth' ), function() {
 	Route::get('/signout',array(
 		'as' => 'signout',
 		'uses' => 'AuthController@getSignout'
+	));
+	/*
+	| home
+	*/
+	Route::get('/', array(
+	'as' => 'home', 
+	'uses' => 'HomeController@showWelcome'
+	));
+	
+	/*
+	|  Profile
+	*/
+	Route::get('/user/{email}', array (
+	'as' => 'profile-user',
+	'uses' => 'ProfileController@user'
+	));
+	/*
+	| Edit password
+	*/
+	Route::get('/edit',array(
+	'as' => 'edit-get',
+	'uses' => 'EditController@home'
+	));
+	Route::post('/edit',array(
+	'as' => 'edit-post',
+	'uses' => 'EditController@editpassword'
 	));
 });
 /*
@@ -83,6 +100,7 @@ Route::group(array('before' => 'guest'), function(){
 		'uses' => 'AuthController@postSignin'
 		));
 	});
+	
 	/*
 	| Sign in (GET)
 	*/
@@ -98,6 +116,13 @@ Route::group(array('before' => 'guest'), function(){
 	'as' => 'register-get', 
 	'uses' => 'AuthController@getRegister'
 	));
+	
+	/*
+	| Detail of this server
+	*/
+	Route::get('/detail', function(){
+	return View::make('detail');
+	});
 	
 });
 /////Order//////
@@ -138,12 +163,6 @@ Route::get('/Review',array(
 Route::get('/Menu',array(
 	'as' => 'Menu-get',
 	'uses' => 'MenuController@getMenu'
-
-));
-
-Route::get('/Edit',array(
-	'as' => 'Edit-get',
-	'uses' => 'EditController@getEdit'
 
 ));
 

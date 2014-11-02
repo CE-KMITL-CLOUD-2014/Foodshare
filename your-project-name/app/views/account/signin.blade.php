@@ -26,8 +26,10 @@
   <body>
 	
     <div class="container">
+	<center>
 @if(Session::has('global'))
 		<p> {{ Session::get('global')}} </p>
+		</center>
 @endif
       <form class="form-signin" action="{{ URL::route('signin-post') }}" method="post" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -45,11 +47,10 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		{{Form::token()}}
       </form>
-
+    <div class="col-md-6 col-md-offset-3"> <h3><center><a href="{{ URL::route('register-get') }}" >Register </a></center></h></div>
     </div> <!-- /container -->
 
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    
   </body>
 </html>

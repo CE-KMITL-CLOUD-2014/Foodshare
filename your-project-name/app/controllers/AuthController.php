@@ -25,7 +25,8 @@ class AuthController extends BaseController {
 			$auth=Auth::attempt(['email' => $email, 'password' => $password], $remember);   //insert into database
 			
 			if($auth){    // if success redirect to homepage
-				return Redirect::intended('/');
+			    Session::put('name', $email);
+				return Redirect::route('profile-user',$email);
 			}else{
 				return Redirect::route('signin-get')
 					->with('global','Email or Password error');
@@ -80,7 +81,7 @@ class AuthController extends BaseController {
 	}
 	public function getSignout(){
 		Auth::logout();
-		return Redirect::route('home');
+		return 'Log out success fully';//Redirect::route('home');
 	}	
 		
 }

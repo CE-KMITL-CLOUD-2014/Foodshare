@@ -3,8 +3,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-4 col-md-2">
-          <img src="#" >
-          <p>This layout to show your profile picture</p>
+          <img width="150" height="150" alt="star" src="data:image/jpeg;base64,{{{$user->profileImage}}}" />
+          <p>{{$user->Email}}  </p>
         </div>
         <div class="col-xs-4 col-md-5">
           <button type="FoodShare" class="btn btn-primary">FoodShare</button>

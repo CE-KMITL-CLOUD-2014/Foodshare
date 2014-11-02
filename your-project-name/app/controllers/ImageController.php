@@ -22,8 +22,8 @@ class ImageController extends BaseController {
 		
 		//$filename=$image->getClientOriginalName();
 	
-		//var_dump(Image::make($image->getRealPath())->save($path));
-		$upload=DB::insert('insert into Table1 (imagestring) values (?)', array($base64));
+		//Image::make($image->getRealPath())->save($img_path));
+		//$upload=DB::insert('insert into Table1 (imagestring) values (?)', array($base64));
 		}
 		if($upload){
 			echo "upload success";
