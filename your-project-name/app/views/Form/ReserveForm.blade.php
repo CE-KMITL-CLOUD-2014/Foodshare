@@ -6,26 +6,26 @@
           <p></p>
             <div class="form-group">
               <label for="examplename">Name</label>
-              <input type="name" class="form-control" id="name" placeholder="Name">
+              <input type="name" class="form-control" name="name" placeholder="Name">
               @if($errors->has('name'))
               {{$errors->first('name')}}
               @endif
             </div>
             <div class="form-group">
               <label for="examplePhonenumber">Phone Number</label>
-              <input type="phonenum" class="form-control" id="phonenum" placeholder="Phonenum">
-              @if($errors->has('phonenum'))
-              {{$errors->first('phonenum')}}
+              <input type="phonenumber" class="form-control" name="phonenumber" placeholder="Phonenum">
+              @if($errors->has('phonenumber'))
+              {{$errors->first('phonenumber')}}
               @endif
             </div>
             <div class="form-group">
               <label for="NumPeople">จำนวนคน</label>
-              <input type="numpeople" class="form-control" id="numpeople" placeholder="Numpeople">
+              <input type="numpeople" class="form-control" name="numpeople" placeholder="Numpeople">
               @if($errors->has('numpeople'))
               {{$errors->first('numpeople')}}
               @endif
             </div>
                 <button type="submit" class="btn btn-default">Submit</button>
-                {{ Form::token() }}
+              {{ Form::token() }}
         </form>
 @stop
