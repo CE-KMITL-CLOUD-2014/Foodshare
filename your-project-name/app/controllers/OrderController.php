@@ -57,11 +57,25 @@ class OrderController extends BaseController {
 	public function setOrder(){
 		return View::make('Order.setOrder');
 	}
+	public function addOrder(){
+		$name = Input::get('name');
+		$price = Input::get('price');
+		$detail = Input::get('detail');
+
+		$addOrder = DB::insert('insert into Ordermenu (name,price,detail) values (?,?,?)',array($name,$price,$detail));
+
+		if($addOrder){
+			return Redirect::route('Orde.setOrder');
+		}
+	}
 	public function showOrder(){
 		return View::make('Order.AllOrderShop');
 	}
 	public function menuOrder(){
 		return View::make('Order.OrderMenu');
+	}
+	public function menu2Order(){
+
 	}
 			
 }

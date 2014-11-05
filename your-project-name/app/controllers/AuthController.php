@@ -73,7 +73,7 @@ class AuthController extends BaseController {
 			if($user){
 			
 				//Send email
-				return Redirect::route('home')
+				return Redirect::route('profile-user',$email)
 					->with('global','Your account has been created');
 			}
 		}

@@ -130,6 +130,7 @@ Route::get('/Order3', array(
 	'as' => 'Order-get', 
 	'uses' => 'OrderController@getOrder'
 ));
+
 Route::post('/Order3', array(
 		'as' => 'Order-post', 
 		'uses' => 'OrderController@postOrder'
@@ -144,9 +145,15 @@ Route::get('/Order1',array(
 	'as' => 'Order-show',
 	'uses' => 'OrderController@showOrder'
 ));
-Route::get('/shopOrder1',array(
+
+Route::get('/setOrder',array(
 	'as' => 'Order-set',
 	'uses' => 'OrderController@setOrder'
+));
+
+Route::post('/setOrder',array(
+	'as' => 'Order-add',
+	'uses' => 'OrderController@addOrder'
 ));
 
 Route::get('/Reserve2', array(
@@ -163,7 +170,10 @@ Route::get('/Reserve1', array(
 	'as' => 'Reserve-show', 
 	'uses' => 'ReserveController@showReserve'
 ));
-
+Route::get('/setReserve',array(
+	'as' => 'Reserve-set',
+	'uses' => 'ReserveController@setReserve'
+));
 Route::get('/Review',array(
 	'as' => 'Review-get',
 	'uses' => 'ReviewController@getReview'
