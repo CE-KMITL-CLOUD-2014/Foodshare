@@ -68,12 +68,13 @@ class AuthController extends BaseController {
 				'code' => $code,
 				'active' => 0,
 				'profileimage' => $image,
+				'extensionimage' => 'jpg'
 			));
 			
 			if($user){
 			
 				//Send email
-				return Redirect::route('profile-user',$email)
+				return Redirect::route('home')
 					->with('global','Your account has been created');
 			}
 		}
