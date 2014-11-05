@@ -9,44 +9,47 @@ class OrderController extends BaseController {
 		
 		$validator = Validator::make(Input::all(),   //check condition
 			array(
-				'Name' => 'required|max:50|email|unique:auth',
-				'Phonenumber' => 'required|max:10',
+				'name' => 'required',
+				'phonenumber' => 'required',
 				'buildingtype' => 'required',
-				'HouseNumber' => 'required',
-				'Road' => 'required',
+				'housenumber' => 'required',
+				'road' => 'required',
 				'street' => 'required',
 				'city' => 'required'
 			)
 		);
 		
 		if($validator->fails()){   //if fail redirect to register page
-			return Redirect::route('Order-menu')
+			return Redirect::route('Order-get')
 				->withErrors($validator)
 				->withInput();
 		}else{
 			$name = Input::get('name');  // retrieve inputs
-			$phonenumber = Input::get('phoenumber');
+			$phonenumber = Input::get('phonenumber');
 			$buildingtype = Input::get('buildingtype');
-			$housenumber = Input::get('houseNumber') ;
+			$housenumber = Input::get('housenumber') ;
 			$road = Input::get('road');
 			$street = Input::get('street');
 			$city = Input::get('city');
+			//DB::insert('insert into users (id, name) values (?, ?)', array(1, 'Dayle'));
+
+			//$order=order::insert('insert into order(name,phonenumber,buildingtype,housenumber,road,street,city) values()',array($name,$phonenumber,$buildingtype,$housenumber,$road,$street,$city));  //create account in database
+			$order=DB::insert('insert into Orders (name,phonenumber,buildingtype,housenumber,road,street,city) values (?,?,?,?,?,?,?)',array($name,$phonenumber,$buildingtype,$housenumber,$road,$street,$city));
 			//Activation code
-			$Order = Order::create(array(   //create account in database
+			/*$order = order::create(array(   //create account in database
 				'name' => $name,
 				'phonenumber' => $phonenumber,
 				'buildingtype' => $buildingtype,
-				'houseNumber' => $housenumber,
+				'housenumber' => $housenumber,
 				'road' => $road,
 				'street' => $street,
 				'city' => $city,
-			));
+			));*/
 			
-			if($Order){
-			
+			if($order){
 				//Send email
-				return Redirect::route('home')
-					->with('global','Your account has been created');
+				return Redirect::route('profile-user',Session::get('name'))
+					->with('global','Ordered');
 			}
 		}
 		
@@ -54,11 +57,25 @@ class OrderController extends BaseController {
 	public function setOrder(){
 		return View::make('Order.setOrder');
 	}
+	public function addOrder(){
+		$name = Input::get('name');
+		$price = Input::get('price');
+		$detail = Input::get('detail');
+
+		$addOrder = DB::insert('insert into Ordermenu (name,price,detail) values (?,?,?)',array($name,$price,$detail));
+
+		if($addOrder){
+			return Redirect::route('Orde.setOrder');
+		}
+	}
 	public function showOrder(){
 		return View::make('Order.AllOrderShop');
 	}
 	public function menuOrder(){
 		return View::make('Order.OrderMenu');
+	}
+	public function menu2Order(){
+
 	}
 			
 }

@@ -9,8 +9,8 @@ class ReserveController extends BaseController {
 		
 		$validator = Validator::make(Input::all(),   //check condition
 			array(
-				'name' => 'required|max:50|email|unique:auth',
-				'Phonenumber' => 'required|max:10',
+				'name' => 'required',
+				'phonenumber' => 'required',
 				'numpeople' => 'required',
 			)
 		);
@@ -25,11 +25,7 @@ class ReserveController extends BaseController {
 			$numpeople = Input::get('numpeople');
 			
 			//Activation code
-			$Reserve = Reserve::create(array(   //create account in database
-				'name' => $name,
-				'phonenumber' => $phonenumber,
-				'numpeople' => $numpeople,
-			));
+			$Reserve=DB::insert('insert into Reserve (name,phonenumber,numpeople) values (?,?,?)',array($name,$phonenumber,$numpeople));
 			
 			if($Reserve){
 				//Send email
@@ -39,14 +35,17 @@ class ReserveController extends BaseController {
 		}
 		
 	}
-	public function setOrder(){
-		return View::make('Form.SetOrder');
+	public function setReserve(){
+		return View::make('Reserve.setReserve');
 	}
 	public function showReserve(){
 		return View::make('Reserve.AllReserveShop');
 	}
 	public function statusReserve(){
 		return View::make('Form.StatusReserve');
+	}
+	public function addReserve(){
+
 	}
 			
 			
