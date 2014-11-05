@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-4 col-md-2">
-          <img width="150" height="150" alt="star" src="data:image/jpeg;base64,{{{$user->profileImage}}}" />
+          <img width="150" height="150" alt="star" src="data:image/{{{$user->extensionImage}}};base64,{{{$user->profileImage}}}" />
           <p>{{$user->Email}}  </p>
         </div>
         <div class="col-xs-4 col-md-5">

@@ -81,7 +81,7 @@ class AuthController extends BaseController {
 	}
 	public function getSignout(){
 		Auth::logout();
-		return 'Log out success fully';//Redirect::route('home');
+		return Redirect::route('signin-get');
 	}	
 		
 }

@@ -35,6 +35,9 @@ Route::post('/blob', array (
 	'uses' => 'ImageController@imageblob'
 ));
 
+Route::get('/centraledit', function(){
+	return View::make('edit.edit');
+	});
 
 /*
 | Authentication filter
@@ -68,11 +71,29 @@ Route::group(array('before' => 'auth' ), function() {
 	*/
 	Route::get('/edit',array(
 	'as' => 'edit-get',
-	'uses' => 'EditController@home'
+	'uses' => 'EditController@getedit'
 	));
 	Route::post('/edit',array(
 	'as' => 'edit-post',
-	'uses' => 'EditController@editpassword'
+	'uses' => 'EditController@postedit'
+	));
+	/*
+	| Create shop
+	*/
+	Route::get('/createshop',array(
+	'as' => 'createshop-get',
+	'uses' => 'ShopController@getcreateshop'
+	));
+	Route::post('/createshop',array(
+	'as' => 'createshop-post',
+	'uses' => 'ShopController@postcreateshop'
+	));
+	/*
+	| shop profile
+	*/
+	Route::get('/shop/{email}/{name}', array (
+	'as' => 'shop-user',
+	'uses' => 'ShopController@shopprofile'
 	));
 });
 /*

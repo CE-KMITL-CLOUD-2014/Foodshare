@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>uploadimage</title>
-</head>
-<body>
+@extends("layout.main")
+@section("content")
+<center>
 
+		@if(Session::has('global'))
+			<p> {{ Session::get('global')}} </p>
+			</center>
+		@endif
+</center>	
+<center>
 <form action="{{ URL::route('image-post') }}" method="post" enctype="multipart/form-data">
   <input type="file" name="uploadimage"><br>
   <input type="submit" value="Upload">
@@ -12,10 +15,6 @@
 			{{$errors->first('uploadimage')}}
   @endif
   
- 
-  
 </form>
-
-
-</body>
-</html>
+</center>
+@stop
