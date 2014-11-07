@@ -56,7 +56,7 @@ Route::group(array('before' => 'auth' ), function() {
 	*/
 	Route::get('/', array(
 	'as' => 'home', 
-	'uses' => 'HomeController@showWelcome'
+	'uses' => 'HomeController@home'
 	));
 	
 	/*
@@ -91,7 +91,7 @@ Route::group(array('before' => 'auth' ), function() {
 	/*
 	| shop profile
 	*/
-	Route::get('/shop/{email}/{name}', array (
+	Route::get('/shop/{name}', array (
 	'as' => 'shop-user',
 	'uses' => 'ShopController@shopprofile'
 	));

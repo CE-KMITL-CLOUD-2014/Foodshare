@@ -15,10 +15,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function home()
 	{
-		
-		return 'Welcome';  //change from 'layout.home' to profile.UserProfile
+		$email=Session::get('name');
+		return Redirect::route('profile-user',$email);
 	}
 
 }

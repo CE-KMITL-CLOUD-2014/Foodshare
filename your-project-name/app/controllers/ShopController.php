@@ -8,7 +8,10 @@ class ShopController extends BaseController {
 		$validator = Validator::make(Input::all(),   //check condition
 			array(
 				'name' => 'required|max:50',
-				'detail' => 'required'
+				'detail' => 'required',
+				'price' => 'required',
+				'city' => 'required',
+				'type' => 'required'
 			)
 		);
 		
@@ -20,15 +23,26 @@ class ShopController extends BaseController {
 			$email = Session::get('name');
 			$name = input::get('name');
 			$detail = Input::get('detail');
-			DB::insert('insert into shop (Email, Name, Detail) values (?, ?,?)', array($email, $name,$detail));
+			$price = Input::get('price');
+			$city = Input::get('city');
+			$type = Input::get('type');
+			$seat = Input::get('seat');
 			
-			return 'insert successfull';
+			DB::insert('insert into shop (Email, Nameshop, Detail,Price,City,Type,Seat) values (?, ?,?,?,?,?,?)', array($email, $name,$detail,$price,$city,$type,$seat));
+			
+			return Redirect::route('home');
 		}
 	}
 	
-	public function shopprofile(){
-	
-	
+	public function shopprofile($name){
+		
+		$nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
+		if($nameshop!=null){
+		return View::make('profile.ShopProfile');
+		}
+		else{
+		return Redirect::intended('/');
+		}
 	}
 
 }

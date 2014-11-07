@@ -5,6 +5,12 @@
         <div class="col-xs-4 col-md-2">
           <img width="150" height="150" alt="star" src="data:image/{{{$user->extensionImage}}};base64,{{{$user->profileImage}}}" />
           <p>{{$user->Email}}  </p>
+			  @if ($shops!=null)
+					@foreach ($shops as $shop)
+						<a href="{{ URL::route('shop-user',$shop->Nameshop)}}">{{ $shop->Nameshop}}</a></br>
+					@endforeach
+			  @else 
+			  @endif
         </div>
         <div class="col-xs-4 col-md-5">
           <button type="FoodShare" class="btn btn-primary">FoodShare</button>

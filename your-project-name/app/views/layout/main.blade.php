@@ -11,8 +11,9 @@
    
 
     <!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
+	
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/profile.css') }}">
 </head>

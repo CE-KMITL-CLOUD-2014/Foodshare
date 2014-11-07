@@ -18,6 +18,6 @@
 </head>
 <body>
     @include("layout.headershop")
-        @yield("content")
+    @yield("content")
 </body>
 </html>
