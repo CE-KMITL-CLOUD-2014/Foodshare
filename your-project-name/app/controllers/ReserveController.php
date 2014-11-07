@@ -25,7 +25,6 @@ class ReserveController extends BaseController {
 			$numpeople = Input::get('numpeople');
 			
 			//Activation code
-			$Reserve=DB::insert('insert into Reserve (name,phonenumber,numpeople) values (?,?,?)',array($name,$phonenumber,$numpeople));
 			
 			if($Reserve){
 				//Send email

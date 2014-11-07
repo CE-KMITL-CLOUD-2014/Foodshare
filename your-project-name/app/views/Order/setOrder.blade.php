@@ -1,9 +1,9 @@
 @extends("layout.main")
 @section("content")
-<form role="form" class="form-order" action="{{ URL::route('Order-add') }}" method="post">
+<form role="form" class="form-order" action="{{ URL::route('Menu-set') }}" method="post">
 	<div class="container-fluid">
 		<div class="row">
-        		  <p>Add food for order</p>
+         <p>Add food for order</p>
          <div class="form-group">
    				   <label for="exampleInputFile">Upload Pic</label>
    				   <input type="file" id="exampleInputFile">
