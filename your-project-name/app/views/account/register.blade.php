@@ -35,6 +35,11 @@
        @if($errors->has('email'))
 			{{$errors->first('email')}}
 	   @endif
+	    <input type="text" name="username" class="form-control" {{(Input::old('username')) ? ' value="' . e(Input::old('username')) . '"' : '' }} placeholder="Username" required autofocus>
+       @if($errors->has('username'))
+			{{$errors->first('username')}}
+	   @endif
+	   <br>
 	    <input type="password" name="password" class="form-control" placeholder="Password" required>
 		 @if($errors->has('password'))
 			{{$errors->first('password')}}

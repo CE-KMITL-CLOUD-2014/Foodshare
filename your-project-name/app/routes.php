@@ -15,25 +15,6 @@ Route::get('/mail', array (
 	'uses' => 'EmailController@home'
 ));
 
-Route::get('/image', array (
-	'as' => 'image-get',
-	'uses' => 'ImageController@home'
-));
-
-Route::post('/image', array (
-	'as' => 'image-post',
-	'uses' => 'ImageController@uploadimage'
-));
-
-Route::get('/blob', array (
-	'as' => 'blob-get',
-	'uses' => 'ImageController@home'
-));
-
-Route::post('/blob', array (
-	'as' => 'blob-post',
-	'uses' => 'ImageController@imageblob'
-));
 
 
 
@@ -117,6 +98,24 @@ Route::group(array('before' => 'auth' ), function() {
 	Route::post('/search/shop', array (
 	'as' => 'searchshop-post',
 	'uses' => 'SearchController@searchShoppost'
+	));
+	/*
+	| Edit profile image
+	*/
+	Route::get('/image', array (
+	'as' => 'image-get',
+	'uses' => 'ImageController@home'
+	));
+	Route::post('/image', array (
+		'as' => 'image-post',
+		'uses' => 'ImageController@uploadimage'
+	));
+	/*
+	|
+	*/
+	Route::get('/blob', array (
+	'as' => 'blob-get',
+	'uses' => 'BlobController@createblob'
 	));
 	
 });
@@ -225,13 +224,9 @@ Route::get('/Review',array(
 	'uses' => 'ReviewController@getReview'
 ));
 
-<<<<<<< HEAD
-Route::post('/Review',array(
-	'as' => 'Review-post',	
-=======
+
 Route::post('/Review', array(
 	'as' => 'Review-post',
->>>>>>> d01496b7c22f90187b81ff2dafaeb89e36a47576
 	'uses' => 'ReviewController@postReview'
 ));
 
