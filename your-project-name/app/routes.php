@@ -225,7 +225,7 @@ Route::get('/Review',array(
 ));
 
 Route::post('/Review',array(
-	'as' => 'Review-post'
+	'as' => 'Review-post',	
 	'uses' => 'ReviewController@postReview'
 ));
 Route::get('/Menu',array(

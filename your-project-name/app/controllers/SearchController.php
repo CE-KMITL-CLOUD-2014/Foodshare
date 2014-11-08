@@ -36,12 +36,43 @@ class SearchController extends BaseController {
 				return View::make('search.searchuserresult')
 					->with('user',$user);
 			}else{
-				return "no";//View::make('search.searchuserresult')->with('user','Can\'t find');
+				return View::make('search.searchnotmatch');
 			}
 		}
 	}
 	public function searchShoppost(){
-		$validator = Validator::make(Input::all(),array('Nameshop' => 'required|max:50'));//check condition
+	
+		$nameshop = Input::get('Nameshop');
+		$city = Input::get('city');
+		$price = Input::get('price');
+		$type = Input::get('type');
+		if($nameshop != null){
+			$shops = DB::select('select * from shop where Nameshop = ?', array($nameshop));
+			if($shops != null){
+				return View::make('search.searchshopresult')->with('shops',$shops);
+			}else{
+				return View::make('search.searchnotmatch');
+			}
+		}else{
+			if(Input::all() != null){
+				$shops = DB::select('select * from shop where city = ? and type= ? and price =?', array($city,$type,$price));
+				if($shops !=null){
+					return View::make('search.searchshopresult')->with('shops',$shops);
+				}else{
+					return View::make('search.searchnotmatch');
+				}
+			}else{
+				return View::make('search.searchnotmatch');
+			}
+		}
+		/*$validator = Validator::make(Input::all(),
+			array(
+			'Nameshop' => 'required|max:50',
+			'city' => 'required',
+			'price' => 'required',
+			'type' => 'required'
+			)
+		);//check condition
 		if($validator->fails()){   //if fail redirect to register page
 			return Redirect::route('searchshop-get')
 				->withErrors($validator)
@@ -54,6 +85,6 @@ class SearchController extends BaseController {
 			}else{
 				return "no";//View::make('search.searchuserresult')->with('user','Can\'t find');
 			}
-		}
+		}*/
 	}
 }
