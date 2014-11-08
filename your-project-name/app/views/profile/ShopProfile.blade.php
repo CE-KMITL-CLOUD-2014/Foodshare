@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-4 col-md-4">
          
-          <p>{{ Session::get('nameshop') }}</p>
+         <p>{{ Session::get('nameshop')}}</p>
         </div>
         <div class="col-xs-4 col-md-8">
           <button type="AllMenu" class="btn btn-primary">ShowAllMenu</button>

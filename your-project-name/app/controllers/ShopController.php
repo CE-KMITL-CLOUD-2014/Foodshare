@@ -37,8 +37,12 @@ class ShopController extends BaseController {
 	public function shopprofile($name){
 		
 		$nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
+	
 		if($nameshop!=null){
-		Session::put('nameshop',$nameshop);
+		/*foreach ($nameshops as $nameshop){
+			$nameshop=$nameshop->Nameshop;
+		}*/	
+		Session::put('nameshop',$name);
 		return View::make('profile.ShopProfile');
 		}
 		else{

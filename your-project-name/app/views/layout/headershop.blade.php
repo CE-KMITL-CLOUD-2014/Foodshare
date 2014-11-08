@@ -12,7 +12,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
              <form class="navbar-form navbar-left" role="search">
                <a class="navbar-brand">Shop Profile</a>
-               <a href="{{URL::route('Order-set')}}" type="Order1" class="btn btn-default navbar-btn">Edit Order</a>
+               <a href="{{URL::route('Menu-add')}}" type="Order1" class="btn btn-default navbar-btn">Edit Order</a>
                 <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
                <a href="{{URL::route('Reserve-show')}}" type="Reserve1" class="btn btn-primary navbar-btn">Edit Reserve</a>
                <a href="{{URL::route('Review-get')}}" type="Review" class="btn btn-success navbar-btn">Review</a>
