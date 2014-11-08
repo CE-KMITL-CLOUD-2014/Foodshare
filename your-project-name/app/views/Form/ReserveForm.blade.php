@@ -12,6 +12,13 @@
               @endif
             </div>
             <div class="form-group">
+              <label for="examplename">lastname</label>
+              <input type="name" class="form-control" name="lastname" placeholder="lastname" required>
+              @if($errors->has('lastname'))
+              {{$errors->first('lastname')}}
+              @endif
+            </div>
+            <div class="form-group">
               <label for="examplePhonenumber">Phone Number</label>
               <input type="text" class="form-control" name="phonenumber" placeholder="Phonenum" required>
               @if($errors->has('phonenumber'))

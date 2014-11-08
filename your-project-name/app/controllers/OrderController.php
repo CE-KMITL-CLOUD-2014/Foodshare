@@ -55,10 +55,8 @@ class OrderController extends BaseController {
 	public function setOrder(){
 		return View::make('Order.setOrder');
 	}
-	public function showOrder($email){
-		$user = User::where('email', '=', $email);
-		return View::make('Order.AllOrderShop');
-
+	public function showOrder(){
+		return View::make('Order.ShowAllShop');
 	}
 	public function menuOrder(){
 		return View::make('Order.OrderMenu');

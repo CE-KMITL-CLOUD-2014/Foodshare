@@ -5,15 +5,15 @@ class ReviewController extends BaseController {
 	public function getReview(){
 		return View::make('Form.ReviewForm');	
 	}
-	public function postReview($name){
+	public function postReview(){
 		$name = Session::get('name');
 		$comment = Input::get('comment');
-		$Nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
+		$Nameshop = Session::get('nameshop');
 
-		$Review = DB::insert('insert into review (ID,email,comment,Nameshop) values (?,?,?)',array($name,$comment,$Nameshop));
+		$Review = DB::insert('insert into review (email,comment,Nameshop) values (?,?,?)',array($name,$comment,$Nameshop));
 
 		if($Review){
-			return Redirect::route('Form.ReviewForm');
+			return Redirect::route('Review-get');
 		}
 	}
 }

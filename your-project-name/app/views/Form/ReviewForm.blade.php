@@ -13,10 +13,10 @@
               {{$errors->first('comment')}}
               @endif
             <p></p>
-            <p><a href="#" class="btn btn-primary" role="button">Comment</a></p>
+             <button type="submit" class="btn btn-default">Submit</button>
+             {{ Form::token() }}
+          </form>
           </div>
-          {{ Form::token() }}
-         <p><a href="{{URL::route('home')}}" type="home" class="btn btn-default navbar-btn">HOME</a></p>
       </div>
     </div>
   </div>

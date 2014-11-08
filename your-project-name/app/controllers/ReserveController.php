@@ -5,7 +5,7 @@ class ReserveController extends BaseController {
 	public function getReserve(){
 		return View::make('Form.ReserveForm');	
 	}
-	public function postReserve($name)	{
+	public function postReserve()	{
 		
 		$validator = Validator::make(Input::all(),   //check condition
 			array(
@@ -21,16 +21,17 @@ class ReserveController extends BaseController {
 				->withErrors($validator)
 				->withInput();
 		}else{
+			$name = Input::get('name');  // retrieve inputs
+			$lastname = Input::get('lastname');
+			$phonenumber = Input::get('phonenumber');
+			$Seat = Input::get('numpeople');
+			$Nameshop = Session::get('nameshop')
+
 			$shopseat = DB::select('select * from shop where Nameshop=?',array($Seat));
 			$seat=Input::get('numpeople');
 			if($seat<$shopseat){
-				$name = Input::get('name');  // retrieve inputs
-				$lastname = Input::get('lastname')
-				//$phonenumber = Input::get('phonenumber');
-				$Seat = Input::get('numpeople');
-				$Nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
 
-				$Reserve=DB::insert('insert into reserve (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?)',array($name,$lastname,'2',$Seat,$Nameshop));
+				$Reserve=DB::insert('insert into reserve (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$Nameshop));
 
 				$shopseat=$shopseat-$seat;
 			

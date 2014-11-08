@@ -186,17 +186,17 @@ Route::get('/Order2',array(
 	'uses' => 'OrderController@menuOrder'
 ));
 
-Route::get('/Order1/{email}',array(
+Route::get('/Order1',array(
 	'as' => 'Order-show',
 	'uses' => 'OrderController@showOrder'
 ));
 
-Route::get('/shop/{name}/addMenu',array(
+Route::get('/addMenu',array(
 	'as' => 'Menu-add',
 	'uses' => 'MenuController@addMenu'
 ));
 
-Route::post('/shop/{name}/addMenu',array(
+Route::post('/addMenu',array(
 	'as' => 'Menu-set',
 	'uses' => 'MenuController@setMenu'
 ));
