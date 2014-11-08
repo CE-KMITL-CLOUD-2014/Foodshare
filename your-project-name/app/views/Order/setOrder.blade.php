@@ -1,4 +1,4 @@
-@extends("layout.main")
+@extends("layout.mainshop")
 @section("content")
 <form role="form" class="form-order" action="{{ URL::route('Menu-set') }}" method="post">
 	<div class="container-fluid">
@@ -21,13 +21,6 @@
  				   </div>
            @if($errors->has('price'))
               {{$errors->first('price')}}
-              @endif
- 				   <div class="form-group">
- 				 	   <Label for="Detail">Detail</label>
- 				 	   <input type="detail" class="form-control" name="detail" placeholder="Detail">
- 				   </div>
-           @if($errors->has('detail'))
-              {{$errors->first('detail')}}
               @endif
  				       <button type="submit" class="btn btn-default">Submit</button>
             {{ Form::token() }}

@@ -5,11 +5,12 @@ class ReserveController extends BaseController {
 	public function getReserve(){
 		return View::make('Form.ReserveForm');	
 	}
-	public function postReserve()	{
+	public function postReserve($name)	{
 		
 		$validator = Validator::make(Input::all(),   //check condition
 			array(
 				'name' => 'required',
+				'lastname' => 'required',
 				'phonenumber' => 'required',
 				'numpeople' => 'required',
 			)
@@ -20,16 +21,31 @@ class ReserveController extends BaseController {
 				->withErrors($validator)
 				->withInput();
 		}else{
-			$name = Input::get('name');  // retrieve inputs
-			$phonenumber = Input::get('phonenumber');
-			$numpeople = Input::get('numpeople');
+			$shopseat = DB::select('select * from shop where Nameshop=?',array($Seat));
+			$seat=Input::get('numpeople');
+			if($seat<$shopseat){
+				$ID = Session::get('name');
+				$name = Input::get('name');  // retrieve inputs
+				$lastname = Input::get('lastname')
+				$phonenumber = Input::get('phonenumber');
+				$Seat = Input::get('numpeople');
+				$Nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
+
+				$Reserve=DB::insert('insert into reserve (ID,name,lastname,Personnumber,seat,Nameshop) values (?,?,?)',array($ID,$name,$lastname,$phonenumber,$Seat,$Nameshop));
+
+				$shopseat=$shopseat-$seat;
 			
 			//Activation code
 			
-			if($Reserve){
+				if($Reserve){
 				//Send email
 				return Redirect::route('home')
 					->with('global','Your account has been created');
+				}
+			} 
+			else{
+				return Redirect::route('home')
+				->with('global','Have bot enough seat for u');
 			}
 		}
 		

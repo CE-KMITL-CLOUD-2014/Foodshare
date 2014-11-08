@@ -3,7 +3,6 @@
    <div class="container-fluid">
       <div class="row">
         <div class="col-xs-4 col-md-4">
-          <img src="#" >
           <p>This layout to show shop profile picture</p>
         </div>
         <div class="col-xs-4 col-md-8">
