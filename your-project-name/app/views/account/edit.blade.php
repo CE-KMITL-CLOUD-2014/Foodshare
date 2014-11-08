@@ -21,7 +21,7 @@
 		<input type="password" name="password_again" class="form-control" placeholder="ConfirmPassword" required>	
         <button  type="submit" class="btn btn-default">Change</button>
       </form>
-	</div>
+	
     </div> <!-- /container -->
 
 
