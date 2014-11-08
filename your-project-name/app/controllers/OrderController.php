@@ -34,8 +34,6 @@ class OrderController extends BaseController {
 			//DB::insert('insert into users (id, name) values (?, ?)', array(1, 'Dayle'));
 
 			//$order=order::insert('insert into order(name,phonenumber,buildingtype,housenumber,road,street,city) values()',array($name,$phonenumber,$buildingtype,$housenumber,$road,$street,$city));  //create account in database
-			$order=DB::insert('insert into Orders (name,phonenumber,buildingtype,housenumber,road,street,city) values (?,?,?,?,?,?,?)',array($name,$phonenumber,$buildingtype,$housenumber,$road,$street,$city));
-			//Activation code
 			/*$order = order::create(array(   //create account in database
 				'name' => $name,
 				'phonenumber' => $phonenumber,

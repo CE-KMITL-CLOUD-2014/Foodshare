@@ -191,9 +191,14 @@ Route::get('/Order1',array(
 	'uses' => 'OrderController@showOrder'
 ));
 
-Route::get('/setOrder',array(
-	'as' => 'Order-set',
-	'uses' => 'OrderController@setOrder'
+Route::get('/addMenu',array(
+	'as' => 'Menu-add',
+	'uses' => 'MenuController@addMenu'
+));
+
+Route::post('/addMenu',array(
+	'as' => 'Menu-set',
+	'uses' => 'MenuController@setMenu'
 ));
 
 Route::post('/setOrder',array(
