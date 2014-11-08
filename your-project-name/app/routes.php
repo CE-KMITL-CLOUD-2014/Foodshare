@@ -219,15 +219,22 @@ Route::get('/setReserve',array(
 	'as' => 'Reserve-set',
 	'uses' => 'ReserveController@setReserve'
 ));
+
 Route::get('/Review',array(
 	'as' => 'Review-get',
 	'uses' => 'ReviewController@getReview'
 ));
 
+<<<<<<< HEAD
 Route::post('/Review',array(
 	'as' => 'Review-post',	
+=======
+Route::post('/Review', array(
+	'as' => 'Review-post',
+>>>>>>> d01496b7c22f90187b81ff2dafaeb89e36a47576
 	'uses' => 'ReviewController@postReview'
 ));
+
 Route::get('/Menu',array(
 	'as' => 'Menu-get',
 	'uses' => 'MenuController@getMenu'
