@@ -13,14 +13,14 @@
             </div>
             <div class="form-group">
               <label for="examplePhonenumber">Phone Number</label>
-              <input type="phonenumber" class="form-control" name="phonenumber" placeholder="Phonenum" required>
+              <input type="text" class="form-control" name="phonenumber" placeholder="Phonenum" required>
               @if($errors->has('phonenumber'))
               {{$errors->first('phonenumber')}}
               @endif
             </div>
             <div class="form-group">
               <label for="NumPeople">จำนวนคน</label>
-              <input type="numpeople" class="form-control" name="numpeople" placeholder="Numpeople" required>
+              <input type="number" class="form-control" name="numpeople" placeholder="Numpeople" required>
               @if($errors->has('numpeople'))
               {{$errors->first('numpeople')}}
               @endif

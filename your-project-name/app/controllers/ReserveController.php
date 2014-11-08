@@ -24,14 +24,13 @@ class ReserveController extends BaseController {
 			$shopseat = DB::select('select * from shop where Nameshop=?',array($Seat));
 			$seat=Input::get('numpeople');
 			if($seat<$shopseat){
-				$ID = Session::get('name');
 				$name = Input::get('name');  // retrieve inputs
 				$lastname = Input::get('lastname')
-				$phonenumber = Input::get('phonenumber');
+				//$phonenumber = Input::get('phonenumber');
 				$Seat = Input::get('numpeople');
 				$Nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
 
-				$Reserve=DB::insert('insert into reserve (ID,name,lastname,Personnumber,seat,Nameshop) values (?,?,?)',array($ID,$name,$lastname,$phonenumber,$Seat,$Nameshop));
+				$Reserve=DB::insert('insert into reserve (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?)',array($name,$lastname,'2',$Seat,$Nameshop));
 
 				$shopseat=$shopseat-$seat;
 			
