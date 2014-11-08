@@ -186,24 +186,19 @@ Route::get('/Order2',array(
 	'uses' => 'OrderController@menuOrder'
 ));
 
-Route::get('/Order1',array(
+Route::get('/Order1/{email}',array(
 	'as' => 'Order-show',
 	'uses' => 'OrderController@showOrder'
 ));
 
-Route::get('/addMenu',array(
+Route::get('/shop/{name}/addMenu',array(
 	'as' => 'Menu-add',
 	'uses' => 'MenuController@addMenu'
 ));
 
-Route::post('/addMenu',array(
+Route::post('/shop/{name}/addMenu',array(
 	'as' => 'Menu-set',
 	'uses' => 'MenuController@setMenu'
-));
-
-Route::post('/setOrder',array(
-	'as' => 'Order-add',
-	'uses' => 'OrderController@addOrder'
 ));
 
 Route::get('/Reserve2', array(
@@ -229,6 +224,10 @@ Route::get('/Review',array(
 	'uses' => 'ReviewController@getReview'
 ));
 
+Route::post('/Review',array(
+	'as' => 'Review-post'
+	'uses' => 'ReviewController@postReview'
+));
 Route::get('/Menu',array(
 	'as' => 'Menu-get',
 	'uses' => 'MenuController@getMenu'

@@ -7,11 +7,15 @@
         <div class="col-xs-4 col-md-12">
           <p>Show All shop</p>
           <p>Previous Review showed</p>
-          <div class="form-group">
-            <textarea class="form-control" rows="3"></textarea>
+          <form class="form-signin" action="{{ URL::route('Review-post') }}" method="post" role="form">
+            <textarea class="form-control" rows="3" name="comment"></textarea>
+            @if($errors->has('comment'))
+              {{$errors->first('comment')}}
+              @endif
             <p></p>
             <p><a href="#" class="btn btn-primary" role="button">Comment</a></p>
           </div>
+          {{ Form::token() }}
          <p><a href="{{URL::route('home')}}" type="home" class="btn btn-default navbar-btn">HOME</a></p>
       </div>
     </div>

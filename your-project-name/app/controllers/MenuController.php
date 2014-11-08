@@ -8,16 +8,17 @@ class MenuController extends BaseController {
 	public function addMenu(){
 		return View::make('Order.setOrder');
 	}
-	public function setMenu(){
-		$name = Input::get('name');
+	public function setMenu($name){
+		$ID = Session::get('name');
+		$namemenu = Input::get('name');
 		$price = Input::get('price');
-		$detail = Input::get('detail');
+		$Image = Input::get('detail');
+		$Nameshop = DB::select('select * from shop where Nameshop = ?', array($name));
 
-		$addOrder = DB::insert('insert into Ordermenu (name,price,detail) values (?,?,?)',array($name,$price,$detail));
+		$addOrder = DB::insert('insert into Ordermenu (ID,namemenu,Price,Image,Nameshop) values (?,?,?)',array($ID,$namemenu,$price,$Image,$Nameshop));
 
 		if($addOrder){
 			return Redirect::route('Order.setOrder');
 		}
-	}
 	}
 }

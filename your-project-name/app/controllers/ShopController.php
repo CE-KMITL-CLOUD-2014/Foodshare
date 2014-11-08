@@ -49,5 +49,4 @@ class ShopController extends BaseController {
 		return Redirect::intended('/');
 		}
 	}
-
 }
