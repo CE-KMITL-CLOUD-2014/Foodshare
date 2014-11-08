@@ -38,7 +38,7 @@ class ImageController extends BaseController {
 		}	
 	 }	 			
 	
-	public function imageblob(){
+	public function createblob(){
 	
 	    $input=Input::all();
 	    $rules=array('uploadimage' => 'required|image');
@@ -49,65 +49,45 @@ class ImageController extends BaseController {
 		
 		}
 	
-		$file='sdkazure\vendor\autoload.php';
-		File::requireOnce($file);
-		File::requireOnce('sdkazure\vendor\microsoft\windowsazure\WindowsAzure\WindowsAzure.php');
+		$file=public_path('sdkazure\vendor\autoload.php');
+		$file2 = public_path('sdkazure\vendor\microsoft\windowsazure\WindowsAzure\WindowsAzure.php');
+		File::requireOnce($file1);
+		File::requireOnce($file2);
 		
 		
 		// Create Connection String
-		$connectionString = "DefaultEndpointsProtocol=http;AccountName=foodshare;AccountKey=rsolzaz1eoRyLwUcIOD3FH6PpiVSWs4GRXtf5NQhgHPa++tazwLJNjhLMoBEOVRVmzLSBOPmOxhxfdE411D04A==";
-        
-		// Create blob REST proxy.
-		$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$connectionString = "DefaultEndpointsProtocol=http;AccountName=foodshare;AccountKey=rsolzaz1eoRyLwUcIOD3FH6PpiVSWs4GRXtf5NQhgHPa++tazwLJNjhLMoBEOVRVmzLSBOPmOxhxfdE411D04A==";
 
-		/*$createContainerOptions = new CreateContainerOptions(); 
+// Create blob REST proxy.
+$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-		$createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
+$createContainerOptions = new CreateContainerOptions(); 
 
-		// Set container metadata
-		$createContainerOptions->addMetaData("key1", "value1");
-		$createContainerOptions->addMetaData("key2", "value2");
+$createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
-		try {
-			// Create container.
-			$blobRestProxy->createContainer("pictures", $createContainerOptions);
+// Set container metadata
+$createContainerOptions->addMetaData("key1", "value1");
+$createContainerOptions->addMetaData("key2", "value2");
 
-			$blobRestProxy->createContainer("movies", $createContainerOptions);
+try {
+    // Create container.
+    $blobRestProxy->createContainer("pictures", $createContainerOptions);
 
-			echo "Container 'pictures' and 'movies' created. ";
-		}
-		catch(ServiceException $e){
-			// Handle exception based on error codes and messages.
-			// Error codes and messages are here: 
-			// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
-			$code = $e->getCode();
-			$error_message = $e->getMessage();
-			echo $code.": ".$error_message."<br />";
-		}
+    $blobRestProxy->createContainer("movies", $createContainerOptions);
 
-
-		$blobRestProxy  = null;*/
-		
-		$content = fopen($_FILES["uploadimage"]["tmp_name"], "r");
-		$blob_name = $_FILES["uploadimage"]["name"];
-
-		try {
-			//Upload blob
-			$blobRestProxy->createBlockBlob("pictures", $blob_name, $content);
-			
-			echo "'$blob_name' has been uploaded.";
-		}
-		catch(ServiceException $e){
-			// Handle exception based on error codes and messages.
-			// Error codes and messages are here: 
-			// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
-			$code = $e->getCode();
-			$error_message = $e->getMessage();
-			echo $code.": ".$error_message."<br />";
-		}
+	echo "Container 'pictures' and 'movies' created. ";
+}
+catch(ServiceException $e){
+    // Handle exception based on error codes and messages.
+    // Error codes and messages are here: 
+    // http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.": ".$error_message."<br />";
+}
 
 
-		$blobRestProxy  = null;
+$blobRestProxy  = null;
 		
 	}
 	
