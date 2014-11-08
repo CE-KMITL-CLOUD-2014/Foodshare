@@ -35,9 +35,7 @@ Route::post('/blob', array (
 	'uses' => 'ImageController@imageblob'
 ));
 
-Route::get('/centraledit', function(){
-	return View::make('edit.edit');
-	});
+
 
 /*
 | Authentication filter
@@ -69,6 +67,9 @@ Route::group(array('before' => 'auth' ), function() {
 	/*
 	| Edit password
 	*/
+	Route::get('/centraledit', function(){
+	return View::make('edit.edit');
+	});
 	Route::get('/edit',array(
 	'as' => 'edit-get',
 	'uses' => 'EditController@getedit'
@@ -95,6 +96,29 @@ Route::group(array('before' => 'auth' ), function() {
 	'as' => 'shop-user',
 	'uses' => 'ShopController@shopprofile'
 	));
+	/*
+	| Search
+	*/
+	Route::get('/centralsearch', function(){
+	return View::make('search.centralsearch');
+	});
+	Route::get('/search/user', array (
+	'as' => 'searchuser-get',
+	'uses' => 'SearchController@searchUserget'
+	));
+	Route::get('/search/shop', array (
+	'as' => 'searchshop-get',
+	'uses' => 'SearchController@searchShopget'
+	));
+	Route::post('/search/user', array (
+	'as' => 'searchuser-post',
+	'uses' => 'SearchController@searchUserpost'
+	));
+	Route::post('/search/shop', array (
+	'as' => 'searchshop-post',
+	'uses' => 'SearchController@searchShoppost'
+	));
+	
 });
 /*
 Unauthentication group

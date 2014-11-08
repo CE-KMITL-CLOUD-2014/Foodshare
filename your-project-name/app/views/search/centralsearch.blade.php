@@ -7,11 +7,10 @@
         <div class="col-xs-4 col-md-12">
           <p>Show All shop</p>
           <div class="form-group">
-            <p><a href="{{ URL::route('image-get') }}" class="btn btn-primary" role="button">Edit profile image</a></p>
-			<p><a href="{{ URL::route('edit-get') }}" class="btn btn-primary" role="button">Edit password</a></p>
+            <p><a href="{{ URL::route('searchuser-get') }}" class="btn btn-primary" role="button">Search User</a></p>
+			<p><a href="{{ URL::route('searchshop-get') }}" class="btn btn-primary" role="button">Search Shop</a></p>
           </div>
       </div>
     </div>
-  </div>
   </div>
 @stop

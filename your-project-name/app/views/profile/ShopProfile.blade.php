@@ -3,8 +3,8 @@
    <div class="container-fluid">
       <div class="row">
         <div class="col-xs-4 col-md-4">
-          <img src="#" >
-          <p>This layout to show shop profile picture</p>
+         
+          <p>{{ Session::get('nameshop') }}</p>
         </div>
         <div class="col-xs-4 col-md-8">
           <button type="AllMenu" class="btn btn-primary">ShowAllMenu</button>
