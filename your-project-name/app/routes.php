@@ -210,7 +210,10 @@ Route::post('/Reserve2', array(
 	'as' => 'Reserve-post', 
 	'uses' => 'ReserveController@postReserve'
 ));
-
+Route::get('/Reserve/Fail',array(
+	'as' => 'Reserve-fail',
+	'uses' => 'ReserveController@failReserve'
+));
 Route::get('/Reserve1', array(
 	'as' => 'Reserve-show', 
 	'uses' => 'ReserveController@showReserve'
@@ -225,13 +228,8 @@ Route::get('/Review',array(
 	'uses' => 'ReviewController@getReview'
 ));
 
-<<<<<<< HEAD
-Route::post('/Review',array(
-	'as' => 'Review-post',	
-=======
 Route::post('/Review', array(
 	'as' => 'Review-post',
->>>>>>> d01496b7c22f90187b81ff2dafaeb89e36a47576
 	'uses' => 'ReviewController@postReview'
 ));
 
