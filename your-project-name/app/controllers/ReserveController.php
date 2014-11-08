@@ -25,16 +25,17 @@ class ReserveController extends BaseController {
 			$lastname = Input::get('lastname');
 			$phonenumber = Input::get('phonenumber');
 			$Seat = Input::get('numpeople');
-			$Nameshop = Session::get('nameshop')
+			$Nameshop = Session::get('nameshop');
 
 			$shopseat = DB::select('select * from shop where Nameshop=?',array($Seat));
 			$seat=Input::get('numpeople');
 			if($seat<$shopseat){
 
-				$Reserve=DB::insert('insert into reserve (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$Nameshop));
+				$Reserve=DB::insert('insert into reserv (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$Nameshop));
 
-				$shopseat=$shopseat-$seat;
-			
+				$newseat = $shopseat-$seat;
+
+				DB::update('update shop set votes=100 where seat=?',array('newseat'));
 			//Activation code
 			
 				if($Reserve){
