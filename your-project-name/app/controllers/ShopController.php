@@ -42,10 +42,12 @@ class ShopController extends BaseController {
 		foreach ($nameshops as $nameshop)
 		{
 			$emailshop = $nameshop->Email;
+			$seat = $nameshop->Seat;
 		}
 		if($nameshops!=null){
 		Session::put('emailshop',$emailshop);
 		Session::put('nameshop',$name);
+		Session::put('seat',$seat);
 		return View::make('profile.ShopProfile')->with('menus',$menus)->with('comments',$comments);
 		}
 		else{

@@ -6,8 +6,8 @@
 
       
          <p>{{ Session::get('nameshop')}}</p>
-
-		
+		<br>
+		<p>Available:{{ Session::get('seat')}} Seat</p>
         </div>
         <div class="col-xs-4 col-md-4">
           <button type="AllMenu" class="btn btn-primary">ShowAllMenu</button>
