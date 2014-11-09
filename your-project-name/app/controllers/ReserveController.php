@@ -29,16 +29,20 @@ class ReserveController extends BaseController {
 
 			$num1=(int)$Seat;
 
-			$shopseat = DB::select('select * from shop where Nameshop=?',array($Seat));
-			$num2=(int)$shopseat;
+			$shopseats = DB::select('select * from shop where Nameshop=?',array($Nameshop));
+			foreach($shopseats as $shopseat){
+				$seatnum=($shopseat->Seat);
+			}
+			echo $seatnum;
+			//$num2=(int)$seatnum;
 			$seat=Input::get('numpeople');
-			if($num1<$num2){
+			if($num1>$seatnum){
 
 				$Reserve=DB::insert('insert into reserv (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$Nameshop));
 
-				$newseat = $num2-$num1;
+				$newseat = $seatnum-$num1;
 
-				DB::update('update shop set seat = 50 where Seat = ?',array($newseat));
+				DB::update('update shop set seat  where Seat = ?',array($newseat));
 			//Activation code
 			
 				if($Reserve){
