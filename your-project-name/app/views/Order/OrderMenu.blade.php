@@ -4,24 +4,28 @@
       <h1>Show All Order Shop</h1>
       <div class="row">
         <div class="col-xs-4 col-md-12">
-          <p>Show All the Pic Food that have a Food to Order</p>
-          <p>Price :</p>
-          <p>Detail : </p>
-          <div class="form-group">
-            <img src="#">
-            <label for="examplename">Name</label>
-            <input type="name" class="form-control" name="Name" placeholder="Name">
-          </div>
-           <div class="form-group">
-            <label for="examplename">Phone number</label>
-            <input type="name" class="form-control" name="phoneNumber" placeholder="Name">
-          </div>
-          <div>
-            <label for="examplename">ที่ต้องการจัดส่ง</label>
-            <textarea class="form-control" rows="3" name="order"></textarea>
-          </div>
-          <p>แสดงราคาที่จะต้องจ่าย</p>
-         <p><a href="{{URL::route('home')}}" type="Order2" class="btn btn-default navbar-btn">Order</a></p>
+			<form class="form-signin" action="{{ URL::route('Order-post') }}" method="post" role="form">
+			@foreach ($menus as $menu)
+			<img width="75" height="75" alt="star" src="data:image/jpg;base64,{{{$menu->Image}}}" />       
+			<br>
+			{{$menu->Namemenu }} 	       {{$menu->Price}}   
+			<br>
+			
+			@endforeach
+			<br>
+			Your order enter name and amount 
+			 <textarea class="form-control" rows="3" name="description" placeholder="Your order enter menu name and amount of each menu for example milk 2 cake 4" required></textarea>
+			<br>
+			<input type="text" style="width: 300px; class="form-control" name="name" placeholder="Name" required> 
+			
+			<input type="text" style="width: 300px; class="form-control" name="lastname" placeholder="Lastname" required> 
+			
+			<input type="text" style="width: 300px; class="form-control" name="phonenumber" placeholder="Phonenumber" required> 
+			<br><br>
+			<textarea class="form-control" rows="3" name="address" placeholder="Address"></textarea>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Order</button>
+         
+		 </form>
       </div>
     </div>
 @stop
