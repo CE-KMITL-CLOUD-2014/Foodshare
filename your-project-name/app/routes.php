@@ -111,14 +111,10 @@ Route::group(array('before' => 'auth' ), function() {
 		'uses' => 'ImageController@uploadimage'
 	));
 	/*
-	| Blob use for review
+	|
 	*/
 	Route::get('/blob', array (
 	'as' => 'blob-get',
-	'uses' => 'BlobController@home'
-	));
-	Route::post('/blob', array (
-	'as' => 'blob-post',
 	'uses' => 'BlobController@createblob'
 	));
 	
@@ -193,7 +189,7 @@ Route::get('/Order1',array(
 	'as' => 'Order-show',
 	'uses' => 'OrderController@showOrder'
 ));
-
+////add menu/////
 Route::get('/addMenu',array(
 	'as' => 'Menu-add',
 	'uses' => 'MenuController@addMenu'
@@ -203,7 +199,7 @@ Route::post('/addMenu',array(
 	'as' => 'Menu-set',
 	'uses' => 'MenuController@setMenu'
 ));
-
+///// Reserve ////
 Route::get('/Reserve2', array(
 	'as' => 'Reserve-get', 
 	'uses' => 'ReserveController@getReserve'
@@ -226,6 +222,7 @@ Route::get('/setReserve',array(
 	'uses' => 'ReserveController@setReserve'
 ));
 
+/////Review////
 Route::get('/Review',array(
 	'as' => 'Review-get',
 	'uses' => 'ReviewController@getReview'
@@ -234,6 +231,11 @@ Route::get('/Review',array(
 Route::post('/Review', array(
 	'as' => 'Review-post',
 	'uses' => 'ReviewController@postReview'
+));
+////comment/////
+Route::post('/comment',array(
+	'as' => 'Comment-set',
+	'uses' => 'CommentController@postComment'
 ));
 
 Route::get('/Menu',array(
