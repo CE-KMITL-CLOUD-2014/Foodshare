@@ -101,7 +101,6 @@ class AuthController extends BaseController {
 					// Create container.
 					$blobRestProxy->createContainer($username, $createContainerOptions);
 
-					echo "Container 'pictures' and 'movies' created. ";
 				}
 				catch(ServiceException $e){
 					// Handle exception based on error codes and messages.
