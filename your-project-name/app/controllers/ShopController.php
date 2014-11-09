@@ -38,6 +38,7 @@ class ShopController extends BaseController {
 		
 		$nameshops = DB::select('select * from shop where Nameshop = ?', array($name));
 		$menus = DB::select('select * from menu where Nameshop = ?', array($name));
+		$comments = DB::select('select * from review where Nameshop = ?', array($name));
 		foreach ($nameshops as $nameshop)
 		{
 			$emailshop = $nameshop->Email;
@@ -45,7 +46,7 @@ class ShopController extends BaseController {
 		if($nameshops!=null){
 		Session::put('emailshop',$emailshop);
 		Session::put('nameshop',$name);
-		return View::make('profile.ShopProfile')->with('menus',$menus);
+		return View::make('profile.ShopProfile')->with('menus',$menus)->with('comments',$comments);
 		}
 		else{
 		return Redirect::intended('/');

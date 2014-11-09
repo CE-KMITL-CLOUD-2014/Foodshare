@@ -9,7 +9,7 @@
 
 		
         </div>
-        <div class="col-xs-4 col-md-8">
+        <div class="col-xs-4 col-md-4">
           <button type="AllMenu" class="btn btn-primary">ShowAllMenu</button>
 			<br><br><br>
 		@foreach ($menus as $menu)
@@ -22,6 +22,11 @@
 		@endforeach
 		
 		</div>
+		<div class="col-xs-4 col-md-4">
+			@foreach ($comments as $comment)
+					{{$comment->Email}}:{{ $comment->Comment }} </br>
+			@endforeach
+		<div>
       </div>
     </div>
 @stop

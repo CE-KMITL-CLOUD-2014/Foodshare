@@ -52,25 +52,22 @@
 					$error_message = $e->getMessage();
 					echo $code.": ".$error_message."<br />";
 				}
-
-
-				$blobRestProxy  = null;
-				
-				
+				$blobRestProxy  = null;	
 			?>
 			<a class="btn btn-primary" href="{{ URL::route('blob-get')}}">Upload picture</a>
-	  </div>
-        <div class="col-xs-4 col-md-5">
-
-        	<form role="form" class="form-order" action="{{ URL::route('Comment-set') }}" method="post" enctype="multipart/form-data">
+		</div>
+		<div class="col-xs-4 col-md-5">
+			@foreach ($comments as $comment)
+					{{ $comment->Comment }} </br>
+			@endforeach
+			<form role="form" class="form-order" action="{{ URL::route('Comment-set') }}" method="post" enctype="multipart/form-data">
           		<textarea class="form-control" rows="3" name="comment"></textarea>
             	@if($errors->has('comment'))
               	{{$errors->first('comment')}}
               	@endif
               	<p></P>
-          <button type="Menushare" class="btn btn-primary">Comment</button>
-          {{ Form::token() }}
-      </form>
+			<button type="Menushare" class="btn btn-primary">Comment</button>
+			</form>
         </div>
       </div>
     </div>

@@ -111,10 +111,14 @@ Route::group(array('before' => 'auth' ), function() {
 		'uses' => 'ImageController@uploadimage'
 	));
 	/*
-	|
+	| Blob use for review
 	*/
 	Route::get('/blob', array (
 	'as' => 'blob-get',
+	'uses' => 'BlobController@home'
+	));
+	Route::post('/blob', array (
+	'as' => 'blob-post',
 	'uses' => 'BlobController@createblob'
 	));
 	

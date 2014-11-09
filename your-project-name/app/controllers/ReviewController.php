@@ -10,10 +10,10 @@ class ReviewController extends BaseController {
 		$comment = Input::get('comment');
 		$Nameshop = Session::get('nameshop');
 
-		$Review = DB::insert('insert into review (email,comment,Nameshop) values (?,?,?)',array($name,$comment,$Nameshop));
+		$Review = DB::insert('insert into review (Email,Comment,Nameshop) values (?,?,?)',array($name,$comment,$Nameshop));
 
 		if($Review){
-			return Redirect::route('Review-get');
+			return Redirect::route('shop-user',$Nameshop);
 		}
 	}
 }

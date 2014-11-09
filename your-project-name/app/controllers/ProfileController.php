@@ -9,7 +9,7 @@ class ProfileController extends BaseController {
 			$username = $user->Username;
 			Session::put('username',$username);
 			return View::make('profile.UserProfile')  
-				->with('user',$user)->with('shops',$shops);
+				->with('user',$user)->with('shops',$shops)->with('comments',$comments);
 		}
 		return App::abort(404);
 		
