@@ -231,10 +231,6 @@ Route::get('/Review',array(
 	'uses' => 'ReviewController@getReview'
 ));
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 Route::post('/Review', array(
 	'as' => 'Review-post',
 	'uses' => 'ReviewController@postReview'

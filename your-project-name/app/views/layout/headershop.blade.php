@@ -12,14 +12,15 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
              <form class="navbar-form navbar-left" role="search">
                <a class="navbar-brand">Shop Profile</a>
-<<<<<<< HEAD
-               <a href="{{URL::route('Menu-add')}}" type="Order1" class="btn btn-default navbar-btn">Add Order</a>
-=======
+				@if (Session::get('name') == Session::get('emailshop'))
+				
+               <a href="{{URL::route('Menu-add')}}" type="Order1" class="btn btn-default navbar-btn">Add Menu</a>
+				@endif
                <a href="{{URL::route('Order-menu')}}" type="Order1" class="btn btn-default navbar-btn">Order</a>
                 <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
                <a href="{{URL::route('Reserve-get')}}" type="Reserve1" class="btn btn-primary navbar-btn">Reserve</a>
                <a href="{{URL::route('Review-get')}}" type="Review" class="btn btn-success navbar-btn">Review</a>
->>>>>>> 55b6d24d8319fffc46ad6f8c7578281426a05f0c
+
                 <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
             </form>
             <form class="navbar-form navbar-right" role="search">

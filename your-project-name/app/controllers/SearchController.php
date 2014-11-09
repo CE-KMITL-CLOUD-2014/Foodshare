@@ -65,26 +65,5 @@ class SearchController extends BaseController {
 				return View::make('search.searchnotmatch');
 			}
 		}
-		/*$validator = Validator::make(Input::all(),
-			array(
-			'Nameshop' => 'required|max:50',
-			'city' => 'required',
-			'price' => 'required',
-			'type' => 'required'
-			)
-		);//check condition
-		if($validator->fails()){   //if fail redirect to register page
-			return Redirect::route('searchshop-get')
-				->withErrors($validator)
-				->withInput();
-		}else{
-			$nameshop = Input::get('Nameshop');
-			$shops = DB::select('select * from shop where Nameshop = ?', array($nameshop));
-			if($shops != null){
-				return View::make('search.searchshopresult')->with('shops',$shops);
-			}else{
-				return "no";//View::make('search.searchuserresult')->with('user','Can\'t find');
-			}
-		}*/
 	}
 }
