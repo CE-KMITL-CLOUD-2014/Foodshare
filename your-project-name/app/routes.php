@@ -184,10 +184,6 @@ Route::group(array('before' => 'guest'), function(){
 	
 });
 /////Order//////
-Route::get('/Order3', array(
-	'as' => 'Order-get', 
-	'uses' => 'OrderController@getOrder'
-));
 
 Route::post('/Order3', array(
 		'as' => 'Order-post', 
@@ -199,10 +195,6 @@ Route::get('/Order2',array(
 	'uses' => 'OrderController@menuOrder'
 ));
 
-Route::get('/Order1',array(
-	'as' => 'Order-show',
-	'uses' => 'OrderController@showOrder'
-));
 ////add menu/////
 Route::get('/addMenu',array(
 	'as' => 'Menu-add',

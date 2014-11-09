@@ -42,11 +42,15 @@ class ReserveController extends BaseController {
 
 				$newseat = $seatnum-$num1;
 
+<<<<<<< HEAD
 				DB::update('update shop set seat  where Seat = ?',array($newseat));
 			//Activation code
+=======
+				DB::update('update shop set seat = 50 where Seat = ?',array($newseat));
+>>>>>>> origin/master
 			
 				if($Reserve){
-				//Send email
+				
 				return Redirect::route('home')
 					->with('global','Your account has been created');
 				}

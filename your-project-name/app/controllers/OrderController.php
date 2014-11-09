@@ -2,67 +2,50 @@
 
 class OrderController extends BaseController {
 
-	public function getOrder(){
-		return View::make('Order.OrderForm');	
-	}
+	
 	public function postOrder()	{
 		
-		$validator = Validator::make(Input::all(),   //check condition
+		$validator = Validator::make(Input::all(), //check condition
 			array(
-				'name' => 'required',
-				'phonenumber' => 'required',
-				'buildingtype' => 'required',
-				'housenumber' => 'required',
-				'road' => 'required',
-				'street' => 'required',
-				'city' => 'required'
+				'description' => 'required',  // have an input
+				'name' => 'required',   //have an input
+				'lastname' => 'required',   //have an input
+				'phonenumber' => 'required',   //have an input
+				'address' => 'required'   //have an input
 			)
 		);
-		
-		if($validator->fails()){   //if fail redirect to register page
-			return Redirect::route('Order-get')
+		if($validator->fails()){            //redirect to signin if error
+			return Redirect::route('signin-get')
 				->withErrors($validator)
 				->withInput();
-		}else{
-			$name = Input::get('name');  // retrieve inputs
-			$phonenumber = Input::get('phonenumber');
-			$buildingtype = Input::get('buildingtype');
-			$housenumber = Input::get('housenumber') ;
-			$road = Input::get('road');
-			$street = Input::get('street');
-			$city = Input::get('city');
-			//DB::insert('insert into users (id, name) values (?, ?)', array(1, 'Dayle'));
-
-			//$order=order::insert('insert into order(name,phonenumber,buildingtype,housenumber,road,street,city) values()',array($name,$phonenumber,$buildingtype,$housenumber,$road,$street,$city));  //create account in database
-			/*$order = order::create(array(   //create account in database
-				'name' => $name,
-				'phonenumber' => $phonenumber,
-				'buildingtype' => $buildingtype,
-				'housenumber' => $housenumber,
-				'road' => $road,
-				'street' => $street,
-				'city' => $city,
-			));*/
 			
-			if($order){
-				//Send email
-				return Redirect::route('profile-user',Session::get('name'))
-					->with('global','Ordered');
+		}else{
+			$name = Input::get('name');
+			$lastname = Input::get('lastname');
+			$description = Input::get('description');
+			$phonenumber = Input::get('phonenumber');
+			$address = Input::get('address');
+			$nameshop=Session::get('nameshop');
+			Mail::send('emails.order', array('name' => $name,'lastname' => $lastname,'phonenumber' => $phonenumber,'address' => $address,'description' => $description), function ($message) {
+			$nameshop=Session::get('nameshop');
+			$emails = DB::select('select Email from shop where Nameshop = ?', array($nameshop));
+			$sendemail;
+			foreach($emails as $email){
+				$sendemail=$email->Email;
 			}
+			$message->to($sendemail,'Dear')->subject('Order');
+			});
+			return Redirect::route('shop-user',$nameshop);
 		}
 		
+		
 	}
-	public function setOrder(){
-		return View::make('Order.setOrder');
-	}
-	public function showOrder(){
-		return View::make('Order.ShowAllShop');
-	}
-	public function menuOrder(){
-		return View::make('Order.OrderMenu');
-	}
-	public function menu2Order(){
 
+	public function menuOrder(){
+		$name = Session::get('nameshop');
+		$menus = DB::select('select * from menu where Nameshop = ?', array($name));
+		
+		return View::make('Order.OrderMenu')->with('menus',$menus);
 	}
 			
 }
