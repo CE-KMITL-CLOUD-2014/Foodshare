@@ -1,13 +1,13 @@
 @extends("layout.mainshop")
 @section("content")
-<form role="form" class="form-order" action="{{ URL::route('Menu-set') }}" method="post">
+<form role="form" class="form-order" action="{{ URL::route('Menu-set') }}" method="post" enctype="multipart/form-data">
 	<div class="container-fluid">
 		<div class="row">
          <p>Add food for order</p>
          <div class="form-group">
    				   <label for="exampleInputFile">Upload Pic</label>
-   				   <input type="file" id="exampleInputFile">
- 				 </div>
+   				   <input type="file" name="uploadimage"><br>
+ 		</div>
         <div class="form-group">
             <Label for="Price">Food name</label>
             <input type="name" class="form-control" name="name" placeholder="Food name">

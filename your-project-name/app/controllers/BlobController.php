@@ -37,7 +37,7 @@ class BlobController extends BaseController {
 				try {
 					//Upload blob
 					$blobRestProxy->createBlockBlob($container_name, $filename, $img_data);  //cintainer name blob name  content
-					
+					File::delete($newpath); //delete image in web
 					return Redirect::route('home');
 				}
 				catch(ServiceException $e){
