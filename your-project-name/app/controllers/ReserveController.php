@@ -32,13 +32,13 @@ class ReserveController extends BaseController {
 			$shopseat = DB::select('select * from shop where Nameshop=?',array($Seat));
 			$num2=(int)$shopseat;
 			$seat=Input::get('numpeople');
-			if($seat<$shopseat){
+			if($num1<$num2){
 
 				$Reserve=DB::insert('insert into reserv (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$Nameshop));
 
 				$newseat = $num2-$num1;
 
-				DB::update('update shop where seat=?',array('newseat'));
+				DB::update('update shop set seat = 50 where Seat = ?',array($newseat));
 			//Activation code
 			
 				if($Reserve){
@@ -48,7 +48,7 @@ class ReserveController extends BaseController {
 				}
 			} 
 			else{
-				return Redirect::route('home')
+				return Redirect::route('Reserve-fail')
 				->with('global','Have bot enough seat for u');
 			}
 		}
@@ -61,7 +61,7 @@ class ReserveController extends BaseController {
 		return View::make('Reserve.AllReserveShop');
 	}
 	public function failReserve(){
-		return View::make('Form.StatusReserve');
+		return View::make('Reserve.StatusReserve');
 	}
 	public function addReserve(){
 
