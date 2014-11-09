@@ -6,6 +6,15 @@
           <h2 class="form-order-heading">Information to Reserve</h2>
           <p></p>
             <div class="form-group">
+              <?php
+              $nameshop=Session::get('nameshop');
+              $seats = DB::select('select Seat from shop where Nameshop = ?', array($nameshop));
+              $numkeep;
+              foreach($seats as $seat){
+                $numkeep=$seat->Seat;
+              }
+              echo $numkeep;
+              ?>
               <label for="examplename">Name</label>
               <input type="name" class="form-control" name="name" placeholder="Name" required>
               @if($errors->has('name'))

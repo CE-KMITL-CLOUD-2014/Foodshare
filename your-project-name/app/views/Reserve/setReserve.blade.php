@@ -3,7 +3,7 @@
 <form role="form" class="form-order" action="{{ URL::route('Reserve-add') }}" method="post">
 	<div class="container-fluid">
 		<div class="row">
-       <p>Add avaliable</p>
+       <h2>Set new seat</h2>
  				 <div class="form-group">
  				 	 <Label for="Avaliable">Avaliable</label>
  				 	 <input type="avaliable" class="form-control" name="avaliable" placeholder="avaliable">

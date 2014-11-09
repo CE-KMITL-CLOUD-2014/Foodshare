@@ -42,7 +42,7 @@ class ShopController extends BaseController {
 		foreach ($nameshops as $nameshop)
 		{
 			$emailshop = $nameshop->Email;
-			$seat = $nameshop->Seat;
+			$seat=$nameshop->Seat;
 		}
 		if($nameshops!=null){
 		Session::put('emailshop',$emailshop);

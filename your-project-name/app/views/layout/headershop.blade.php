@@ -14,14 +14,13 @@
                <a class="navbar-brand">Shop Profile</a>
 				@if (Session::get('name') == Session::get('emailshop'))
 				
-               <a href="{{URL::route('Menu-add')}}" type="Order1" class="btn btn-default navbar-btn">Add Menu</a>
+               <a href="{{URL::route('Menu-add')}}" type="MenuAdd" class="btn btn-default navbar-btn">Add Menu</a>
+               <a href="{{URL::route('Reserve-set')}}" type="SetReserve" class="btn btn-success navbar-btn">set Reserve</a>
 				@endif
                <a href="{{URL::route('Order-menu')}}" type="Order1" class="btn btn-default navbar-btn">Order</a>
-                <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
                <a href="{{URL::route('Reserve-get')}}" type="Reserve1" class="btn btn-primary navbar-btn">Reserve</a>
                <a href="{{URL::route('Review-get')}}" type="Review" class="btn btn-success navbar-btn">Review</a>
 
-                <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
             </form>
             <form class="navbar-form navbar-right" role="search">
               <a href="{{URL::route('home')}}" type="home" class="btn btn-primary navbar-btn">home</a>
