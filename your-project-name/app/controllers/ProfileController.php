@@ -3,7 +3,6 @@ class ProfileController extends BaseController {
 	public function user($email){
 		$user = User::where('email', '=', $email);
 		$shops = DB::select('select * from shop where Email = ?', array($email));
-		$comments = DB::select('select * from comment where Email = ?', array($email));
 		if($user->count()){
 			$user = $user->first();
 			$username = $user->Username;

@@ -61,16 +61,9 @@
 			<a class="btn btn-primary" href="{{ URL::route('blob-get')}}">Upload picture</a>
 	  </div>
         <div class="col-xs-4 col-md-5">
-
-        	<form role="form" class="form-order" action="{{ URL::route('Comment-set') }}" method="post" enctype="multipart/form-data">
-          		<textarea class="form-control" rows="3" name="comment"></textarea>
-            	@if($errors->has('comment'))
-              	{{$errors->first('comment')}}
-              	@endif
-              	<p></P>
-          <button type="Menushare" class="btn btn-primary">Comment</button>
-          {{ Form::token() }}
-      </form>
+          <img src="#" >
+          <button type="Menushare" class="btn btn-primary">MenuShare</button>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies sapien quam, id tincidunt libero maximus a. Mauris dapibus sed ex ut ornare. Duis varius arcu nec leo fermentum, sit amet convallis orci sollicitudin. Proin pellentesque, massa id tristique tempor, risus mi aliquet risus, at convallis nibh sapien id lacus. Sed nec sem dignissim, malesuada justo eget, tincidunt dolor. Curabitur sed leo efficitur, varius enim id, venenatis velit. Nullam vehicula ut ipsum viverra suscipit. Donec justo ipsum, volutpat sit amet feugiat eu, elementum in orci. Aenean ut ex sit amet nisi egestas interdum. Vestibulum ultrices molestie tortor in tempor. Nullam tincidunt venenatis libero, nec sodales tellus finibus sit amet. Nullam at felis sed sapien fringilla rhoncus id venenatis odio.</p>
         </div>
       </div>
     </div>
