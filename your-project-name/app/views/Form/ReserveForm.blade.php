@@ -1,7 +1,8 @@
-@extends("layout.main")
+@extends("layout.mainshop")
 @section("content")
     <form role="form" class="form-order" action="{{ URL::route('Reserve-post') }}" method="post">
        <div class="container-fluid">
+        <div class="container">
           <h2 class="form-order-heading">Information to Reserve</h2>
           <p></p>
             <div class="form-group">
@@ -35,4 +36,6 @@
                 <button type="submit" class="btn btn-default">Submit</button>
               {{ Form::token() }}
         </form>
+      </div>
+    </div>
 @stop

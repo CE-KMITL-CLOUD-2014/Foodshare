@@ -1,4 +1,4 @@
-@extends("layout.main")
+@extends("layout.mainshop")
 @section("content")
     <div class="container-fluid">
       <h1>Show All Order Shop</h1>

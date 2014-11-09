@@ -24,6 +24,7 @@
                 <!--<button type="Order" class="btn btn-default"><a href="{{ URL::route('Order-get') }}">Order</a></button> -->
             </form>
             <form class="navbar-form navbar-right" role="search">
+              <a href="{{URL::route('home')}}" type="home" class="btn btn-primary navbar-btn">home</a>
               <a href="{{URL::to('/centraledit')}}" type="Edit" class="btn btn-info navbar-btn">Edit</a>
               <a href="{{URL::route('signout')}}" type="Logout" class="btn btn-warning navbar-btn">Logout</a>
             </form>

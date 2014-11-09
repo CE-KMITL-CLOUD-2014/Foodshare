@@ -16,7 +16,7 @@
           
 			<?php
 				
-				$file1=public_path('sdkazure\vendor\autoload.php');
+			$file1=public_path('sdkazure\vendor\autoload.php');
 			$file2 = public_path('sdkazure\vendor\microsoft\windowsazure\WindowsAzure\WindowsAzure.php');
 			File::requireOnce($file1);
 			File::requireOnce($file2);
