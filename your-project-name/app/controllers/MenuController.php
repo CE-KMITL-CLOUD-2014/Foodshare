@@ -9,7 +9,20 @@ class MenuController extends BaseController {
 		return View::make('Order.setOrder');
 	}
 	public function setMenu(){
+
+		$validator = Validator::make(Input::all(), //check condition
+			array(
+				'uploadimage'=>'required|image',
+				'name' => 'required',  // have an input
+				'price' => 'required',   //have an input
+			)
+		);
+		if($validator->fails()){            //redirect to signin if error
+			return Redirect::route('Menu-add')
+				->withErrors($validator)
+				->withInput();
 		//retrieve image and set parameter image
+		}else{
 		$image=Input::file('uploadimage');
 		$img_path=$image->getRealPath();
 		$filename=$image->getClientOriginalName();
@@ -34,6 +47,7 @@ class MenuController extends BaseController {
 		if($addOrder){
 			File::delete($newpath);
 			return Redirect::route('shop-user',$Nameshop);
+			}
 		}
 	}
 }
