@@ -3,12 +3,14 @@
 class CommentController extends BaseController {
 
 	public function postComment(){
-		$user = Session::get('name');
+		$owneruser = Session::get('Ownername');
 		$comment = Input::get('comment');
-
-		DB::insert('insert into comment (Email,Comment) values (?,?)',array($user,$comment));
-	
-		return Redirect::route('home');
+		$user= Session::get('name');
+		if(DB::insert('insert into comment (Email,Comment,OwnerEmail) values (?,?,?)',array($user,$comment,$owneruser))){
+			return Redirect::route('profile-user',$owneruser);
+		}else{
+			return Redirect::route('profile-user',$owneruser);
+		}
 		
 	}
 }

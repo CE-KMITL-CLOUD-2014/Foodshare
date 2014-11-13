@@ -24,7 +24,7 @@
 		</div>
 		<div class="col-xs-4 col-md-4">
 			@foreach ($comments as $comment)
-					{{$comment->Email}}:{{ $comment->Comment }} </br>
+					<a href="{{ URL::route('profile-user',$comment->Email)}}">{{ $comment->Email }} </a>:{{ $comment->Comment }} </br>
 			@endforeach
 		<div>
       </div>

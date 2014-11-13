@@ -10,13 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/mail', array (
-	'as' => 'mail',
-	'uses' => 'EmailController@home'
-));
-
-
-
 
 /*
 | Authentication filter
@@ -113,16 +106,6 @@ Route::group(array('before' => 'auth' ), function() {
 	/*
 	| Blob use for review
 	*/
-	/* Blob use for review
-	*/
-	Route::get('/blob', array (
-	'as' => 'blob-get',
-	'uses' => 'BlobController@home'
-	));
-	Route::post('/blob', array (
-	'as' => 'blob-post',
-	'uses' => 'BlobController@createblob'
-	));
 	Route::get('/blob', array (
 	'as' => 'blob-get',
 	'uses' => 'BlobController@home'
