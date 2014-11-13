@@ -18,7 +18,7 @@ Lastname :	{{	$lastname		}} <br><br>
 Phonenumber:	{{	$phonenumber	}} <br><br>
 
 
-numpeople :	{{	$seat2	}} <br><br>
+numpeople :	{{	$numpeople	}} <br><br>
 
 
     

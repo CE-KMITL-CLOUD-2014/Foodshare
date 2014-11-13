@@ -13,7 +13,7 @@
               foreach($seats as $seat){
                 $numkeep=$seat->Seat;
               }
-              echo $numkeep;
+              
               ?>
               <label for="examplename">Name</label>
               <input type="name" class="form-control" name="name" placeholder="Name" required>
@@ -30,14 +30,14 @@
             </div>
             <div class="form-group">
               <label for="examplePhonenumber">Phone Number</label>
-              <input type="text" class="form-control" name="phonenumber" placeholder="Phonenum" required>
+              <input type="number" class="form-control" name="phonenumber" placeholder="Phonenum" required>
               @if($errors->has('phonenumber'))
               {{$errors->first('phonenumber')}}
               @endif
             </div>
             <div class="form-group">
               <label for="NumPeople">จำนวนคน</label>
-              <input type="number" class="form-control" name="numpeople" placeholder="Numpeople" required>
+              <input type="number" class="form-control" name="numpeople" placeholder="Numpeople less or equal{{ $numkeep }}" required>
               @if($errors->has('numpeople'))
               {{$errors->first('numpeople')}}
               @endif

@@ -11,8 +11,8 @@ class ReserveController extends BaseController {
 			array(
 				'name' => 'required',
 				'lastname' => 'required',
-				'phonenumber' => 'required',
-				'numpeople' => 'required',
+				'phonenumber' => 'required|numeric',
+				'numpeople' => 'required|numeric'
 			)
 		);
 		
@@ -48,7 +48,7 @@ class ReserveController extends BaseController {
 					foreach($emails as $email){
 						$sendemail=$email->Email;
 					}
-				$message->to($sendemail,'Dear')->subject('Order');
+				$message->to($sendemail,'Dear')->subject('Reserv');
 			});
 				$newseat = $numkeep-$num1;
 
