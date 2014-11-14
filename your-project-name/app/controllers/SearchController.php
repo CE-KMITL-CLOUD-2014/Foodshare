@@ -36,7 +36,7 @@ class SearchController extends BaseController {
 				return View::make('search.searchuserresult')
 					->with('user',$user);
 			}else{
-				return View::make('search.searchnotmatch');
+				return View::make('search.searchuser')->with('errormessage','There is no this email');
 			}
 		}
 	}
@@ -51,7 +51,7 @@ class SearchController extends BaseController {
 			if($shops != null){
 				return View::make('search.searchshopresult')->with('shops',$shops);
 			}else{
-				return View::make('search.searchnotmatch');
+				return View::make('search.searchshop')->with('searchresult','There is no this shop name');
 			}
 		}else{
 			if(Input::all() != null){
@@ -59,10 +59,10 @@ class SearchController extends BaseController {
 				if($shops !=null){
 					return View::make('search.searchshopresult')->with('shops',$shops);
 				}else{
-					return View::make('search.searchnotmatch');
+					return View::make('search.searchshop')->with('searchresult','There is no shop in this condition');
 				}
 			}else{
-				return View::make('search.searchnotmatch');
+				return View::make('search.searchshop')->with('searchresult','There is no condition');
 			}
 		}
 	}

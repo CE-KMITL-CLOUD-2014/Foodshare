@@ -2,7 +2,10 @@
 @section("content")
 	<link rel="stylesheet" href="{{ URL::asset('bootstrap/css/edit.css') }}">
     <div class="container">
-	
+		<center>@if(isset($searchresult))
+			<p>{{ $searchresult }}</p>
+					@endif
+		</center>
       <form class="form-signin" action="{{ URL::route('searchshop-post') }}" method="post" role="form">
         <h2 class="form-signin-heading">Search shop</h2>
         <input type="text" name="Nameshop" class="form-control" placeholder="Shop Name" >
