@@ -24,6 +24,16 @@
                     <li><a href="{{URL::route('signout')}}" type="Logout">Logout</a></li>
                   </ul>
               </ul>
+               <form class="navbar-form navbar-right" role="form" action="{{ URL::route('searchuser-post') }}" method="post">
+            <div class="form-group">
+              <input type="text" name="Email" class="form-control" placeholder="Search By User Email" required>
+            </div>
+            <div class="form-group">
+              
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+          </form>
+            </div>
             </div>
           </div>
         </nav>
