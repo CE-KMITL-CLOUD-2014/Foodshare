@@ -8,7 +8,7 @@
 		</center>
       <form class="form-signin" action="{{ URL::route('searchshop-post') }}" method="post" role="form">
         <h2 class="form-signin-heading">Search shop</h2>
-        <input type="text" name="Nameshop" class="form-control" placeholder="Shop Name" >
+        <input type="text" name="Nameshop" placeholder="Shop Name" >
 		<select name="price">
 			<option value="Low">Low 20+</option>
 			<option value="Medium">Medium 70+</option>

@@ -140,6 +140,13 @@ Route::group(array('before' => 'guest'), function(){
 		'as' => 'signin-post', 
 		'uses' => 'AuthController@postSignin'
 		));
+		/*
+		| forgot password post
+		*/
+		Route::post('/forgot', array(
+		'as' => 'forgot-post', 
+		'uses' => 'AuthController@postForgotPassword'
+		));
 	});
 	
 	/*
@@ -164,6 +171,20 @@ Route::group(array('before' => 'guest'), function(){
 	Route::get('/detail', function(){
 	return View::make('detail');
 	});
+	
+	/*
+	| forgot password
+	*/
+	Route::get('/forgot', array(
+	'as' => 'forgot-get', 
+	'uses' => 'AuthController@getForgotPassword'
+	));
+	
+	Route::get('recover/{code}',array(
+	'as' => 'recover-get',
+	'uses' => 'AuthController@getRecovery'
+	));
+	
 	
 });
 /////Order//////

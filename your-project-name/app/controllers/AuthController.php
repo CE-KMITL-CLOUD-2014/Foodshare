@@ -122,5 +122,63 @@ class AuthController extends BaseController {
 		Auth::logout();
 		return Redirect::route('signin-get');
 	}	
+	
+	public function getForgotPassword(){
+	
+		return View::make('account.forgot');
+	}
+	
+	public function postForgotPassword(){
+	
+		$validator = Validator::make(Input::all(),
+		array(
+				'email' => 'required|email'
+				)
+		);
+		if($validator->fails()){
+			return Redirect::route('forgot-get')
+			->withErrors($validator)
+			->withInput();
+		}else{
 		
+			$user = User::where('Email', '=' , Input::get('email'));
+			
+			if($user->count()){
+				$user = $user->first();
+				
+				$code = str_random(60);
+				$password = str_random(10);
+				
+				$user->Code =$code;
+				$user->Password_temp = Hash::make($password);
+				
+				if($user->save()){
+					Mail::send('emails.forgot',array('url' =>URL::route('recover-get',$code),'password' => $password),function($message) use ($user) {
+						$message->to($user->Email)->subject('Your new password');
+					});
+					
+					return Redirect::route('signin-get')->with('global','We have sent you a new password');
+				}	
+			}
+		}
+		
+			return Redirect::route('forgot-get')->with('global','Could not request');
+		}
+		
+		public function getRecovery($code){
+				$user = User::where('Code', '=',$code)->where('Password_temp','!=','');
+							
+							
+				if($user->count()){
+					$user = $user->first();			
+					$user->Password = $user->Password_temp;
+					$user->Password_temp = '';
+					$user->Code = '';
+					
+					if($user->save()){
+						return Redirect::route('signin-get')->with('global','Your account has been recover and you can sign in with your new password.');	
+					}
+				}	
+				return Redirect::route('signin-get')->with('global','Cloud not recovery your account.');
+		}
 }

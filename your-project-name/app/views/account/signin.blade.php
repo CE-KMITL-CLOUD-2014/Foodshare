@@ -48,6 +48,7 @@
 		{{Form::token()}}
       </form>
     <div class="col-md-6 col-md-offset-3"> <h3><center><a href="{{ URL::route('register-get') }}" >Register </a></center></h></div>
+	<div class="col-md-6 col-md-offset-3"> <h3><center><a href="{{ URL::route('forgot-get') }}" >Forgot password</a></center></h></div>
     </div> <!-- /container -->
 
 

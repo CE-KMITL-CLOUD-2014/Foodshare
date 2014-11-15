@@ -11,7 +11,7 @@
       <div class="col-md-12 "> <div class="form-group">
               <Label for="Price" class="col-md-2 control-label" ><p style="color:#428bca;">Name shop</p></label>
                 <div class="col-md-9">
-              <input type="text" name="Nameshop" class="form-control" placeholder="Shop Name" required><br>
+              <input type="text" name="Nameshop" class="form-control" placeholder="Shop Name" ><br>
               </div>
             </div>
           </div>
