@@ -54,4 +54,8 @@ class ShopController extends BaseController {
 		return Redirect::intended('/');
 		}
 	}
+	public function getallShop(){																//To display all shop
+		$shops = DB::table('shop')->get();
+		return View::make('Form.ShowAllShop')->with('shops',$shops);
+	}
 }

@@ -12,7 +12,8 @@ class ReserveController extends BaseController {
 				'name' => 'required',
 				'lastname' => 'required',
 				'phonenumber' => 'required|numeric',
-				'numpeople' => 'required|numeric'
+				'numpeople' => 'required|numeric',
+				'Date'=>'required'
 			)
 		);
 		
@@ -26,6 +27,7 @@ class ReserveController extends BaseController {
 			$phonenumber = Input::get('phonenumber');
 			$Seat = Input::get('numpeople');
 			$nameshop = Session::get('nameshop');
+			$date = input::get('Date');
 
 			$num1;
 			$num1=(int)$Seat;
@@ -41,7 +43,7 @@ class ReserveController extends BaseController {
 
 				$Reserve=DB::insert('insert into reserv (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$nameshop));
 
-				Mail::send('emails.reserve', array('name' => $name,'lastname' => $lastname,'phonenumber' => $phonenumber, 'numpeople' => $seat2 ), function ($message){
+				Mail::send('emails.reserve', array('name' => $name,'lastname' => $lastname,'phonenumber' => $phonenumber, 'numpeople' => $seat2,'date'=>$date ), function ($message){
 					$nameshop=Session::get('nameshop');
 					$emails = DB::select('select Email from shop where Nameshop = ?', array($nameshop));
 					$sendemail;

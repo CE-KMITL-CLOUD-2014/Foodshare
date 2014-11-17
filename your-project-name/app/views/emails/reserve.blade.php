@@ -20,6 +20,7 @@ Phonenumber:	{{	$phonenumber	}} <br><br>
 
 numpeople :	{{	$numpeople	}} <br><br>
 
+date : {{$date }}<br><br>
 
     
   </body>

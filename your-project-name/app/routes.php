@@ -253,6 +253,10 @@ Route::get('/Menu',array(
 	'uses' => 'MenuController@getMenu'
 
 ));
+Route::get('/allshop', array(
+	'as' => 'Shop-show',
+	'uses' =>'ShopController@getallShop'
+));
 
 
 Route::get('/shopuser', function(){

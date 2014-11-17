@@ -14,6 +14,13 @@
               @endif
             </div>
             <div class="form-group">
+              <label for="examplePhonenumber">Lastname</label>
+              <input type="lastname" class="form-control" name="lastname" placeholder="lastname" required>
+              @if($errors->has('lastname'))
+              {{$errors->first('lastname')}}
+              @endif
+            </div>
+            <div class="form-group">
               <label for="examplePhonenumber">Phone Number</label>
               <input type="phonenumber" class="form-control" name="phonenumber" placeholder="Phonenum" required>
               @if($errors->has('phonenumber'))
@@ -25,6 +32,13 @@
               <input type="numpeople" class="form-control" name="numpeople" placeholder="จำนวนคน" required>
               @if($errors->has('numpeople'))
               {{$errors->first('numpeople')}}
+              @endif
+            </div>
+              <div class="form-group">
+              <label for="Date">วันเวลาการจอง</label>
+              <input type="date" class="form-control" name="Date" placeholder="วันเวลาการจอง" required>
+              @if($errors->has('Date'))
+              {{$errors->first('Date')}}
               @endif
             </div>
                 <button type="submit" class="btn btn-success">Submit</button>
