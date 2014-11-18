@@ -6,7 +6,7 @@ class ReservTest extends TestCase {
 	public function test_reserv()
 	{
 		/*for use this test you muse create your database relative with this code and edit app/config/database.php* because test can't not connect to azure database*/
-			/*and you must edit code in ordercontroller line53 from $nameshop to your email address*/
+			/*and you must edit code in reservcontroller line53 from $nameshop to your email address*/
 			/*after you run this code you will receive your email inbox */
 		$nameshop = 'Narashop';
 		$num1=10;
