@@ -6,8 +6,10 @@ class ReserveController extends BaseController {
 		return View::make('Form.ReserveForm');	
 	}
 	public function postReserve()	{
-		
-		$validator = Validator::make(Input::all(),   //check condition
+		/*this function for user who want to Reserve a shop 
+		Type an information of your Reserve
+		It will send email to shopuser for confirm*/
+		$validator = Validator::make(Input::all(),   		//check condition
 			array(
 				'name' => 'required',
 				'lastname' => 'required',
@@ -17,12 +19,12 @@ class ReserveController extends BaseController {
 			)
 		);
 		
-		if($validator->fails()){   //if fail redirect to register page
+		if($validator->fails()){   							//if fail redirect to register page
 			return Redirect::route('Reserve-show')
 				->withErrors($validator)
 				->withInput();
 		}else{
-			$name = Input::get('name');  // retrieve inputs
+			$name = Input::get('name'); 					 // retrieve inputs
 			$lastname = Input::get('lastname');
 			$phonenumber = Input::get('phonenumber');
 			$Seat = Input::get('numpeople');
@@ -30,19 +32,18 @@ class ReserveController extends BaseController {
 			$date = input::get('Date');
 
 			$num1;
-			$num1=(int)$Seat;
-			$seats = DB::select('select Seat from shop where Nameshop = ?', array($nameshop));
+			$num1=(int)$Seat;								//Change into int
+			$seats = DB::select('select Seat from shop where Nameshop = ?', array($nameshop));   //select seat from shop
 			$numkeep;
 			foreach($seats as $seat){
 				$numkeep=$seat->Seat;
 			}
 			$seat2=(string)$Seat;
 
-			//$num2=(int)$seatnum;
-			if($num1<$numkeep){
+			if($num1<$numkeep){								//if Reserve seat from user typing is lessthan shop seat it will reserve
 
 				$Reserve=DB::insert('insert into reserv (name,lastname,Phonenumber,seat,Nameshop) values (?,?,?,?,?)',array($name,$lastname,$phonenumber,$Seat,$nameshop));
-
+				//Send email when Reserve
 				Mail::send('emails.reserve', array('name' => $name,'lastname' => $lastname,'phonenumber' => $phonenumber, 'numpeople' => $seat2,'date'=>$date ), function ($message){
 					$nameshop=Session::get('nameshop');
 					$emails = DB::select('select Email from shop where Nameshop = ?', array($nameshop));
@@ -59,7 +60,7 @@ class ReserveController extends BaseController {
             		->update(array('Seat' => $newseat));
 
 				//DB::update('update shop set seat = 50  where Seat = ?',array($newseat));
-			//Activation code
+				//Activation code
 			
 				if($Reserve){
 				//Send email
@@ -67,6 +68,7 @@ class ReserveController extends BaseController {
 				}
 			} 
 			else{
+				//cant reserve
 				return Redirect::route('Reserve-fail')
 				->with('global','Have bot enough seat for u');
 			}
@@ -77,7 +79,9 @@ class ReserveController extends BaseController {
 		return View::make('Reserve.setReserve');
 	}
 	public function reReserve(){
-		$Seat = Input::get('avaliable');
+		/*this function is for shop user
+		For set seat back again */
+		$Seat = Input::get('avaliable');		//input
 		$nameshop = Session::get('nameshop');
 		DB::table('shop')
             ->where('Nameshop', $nameshop)

@@ -10,15 +10,18 @@
       <form class="form-signin" action="{{ URL::route('edit-post') }}" method="post" role="form">
         <center><h2 class="form-signin-heading">Edit Password</h2></center><br>
         <input type="password" name="oldpassword" class="form-control" placeholder="OldPassword" required>
+        <p></p>
     @if($errors->has('oldpassword'))
       {{ $errors->first('oldpassword') }}
     @endif
       <input type="password" name="newpassword" class="form-control" placeholder="NewPassword" required>
+      <p></p>
     @if($errors->has('newpassword'))
       {{ $errors->first('newpassword') }}
     @endif
     <input type="password" name="password_again" class="form-control" placeholder="ConfirmPassword" required> 
-        <button  type="submit" class="btn btn-default">Change</button>
+    <p></p>
+       <center> <button  type="submit" class="btn btn-default">Change</button></center>
       </form>
   </div>
     </div> <!-- /container -->

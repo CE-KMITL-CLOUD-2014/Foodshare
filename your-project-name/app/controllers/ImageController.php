@@ -7,9 +7,10 @@ class ImageController extends BaseController {
 	}
 	
 	public function uploadimage(){
+		/*This function is for upload image to the Profile Picture*/
 		$input=Input::all();
 		$rules=array('uploadimage' => 'required|image');
-	    $validator = Validator::make($input, $rules);     //check condition
+	    $validator = Validator::make($input, $rules);     			//check condition
 		if ($validator->fails()){      								//if fail redirect to form
 			return Redirect::route('image-get')->withErrors($validator);
 		}else{

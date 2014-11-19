@@ -4,17 +4,19 @@ class OrderController extends BaseController {
 
 	
 	public function postOrder()	{
-		
+		/*this function for user who want to Order a food from shop 
+		Type an information of your order
+		It will send email to shopuser for confirm*/
 		$validator = Validator::make(Input::all(), //check condition
 			array(
-				'description' => 'required',  // have an input
-				'name' => 'required',   //have an input
-				'lastname' => 'required',   //have an input
-				'phonenumber' => 'required',   //have an input
-				'address' => 'required'   //have an input
+				'description' => 'required',  	  // have an input
+				'name' => 'required',   		  //have an input
+				'lastname' => 'required',   	  //have an input
+				'phonenumber' => 'required',   	  //have an input
+				'address' => 'required'           //have an input
 			)
 		);
-		if($validator->fails()){            //redirect to signin if error
+		if($validator->fails()){                 //redirect to signin if error
 			return Redirect::route('signin-get')
 				->withErrors($validator)
 				->withInput();
@@ -26,6 +28,7 @@ class OrderController extends BaseController {
 			$phonenumber = Input::get('phonenumber');
 			$address = Input::get('address');
 			$nameshop=Session::get('nameshop');
+			//send email to shop
 			Mail::send('emails.order', array('name' => $name,'lastname' => $lastname,'phonenumber' => $phonenumber,'address' => $address,'description' => $description), function ($message) {
 			$nameshop=Session::get('nameshop');
 			$emails = DB::select('select Email from shop where Nameshop = ?', array($nameshop));

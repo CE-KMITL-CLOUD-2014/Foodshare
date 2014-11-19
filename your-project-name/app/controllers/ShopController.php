@@ -5,6 +5,8 @@ class ShopController extends BaseController {
 		return View::make('account.shop');
 	}
 	public function postcreateshop(){
+		/*THis function for user who want to build a shop 
+		To Created by type a detail*/
 		$validator = Validator::make(Input::all(),   //check condition
 			array(
 				'name' => 'required|max:50',
@@ -35,7 +37,10 @@ class ShopController extends BaseController {
 	}
 	
 	public function shopprofile($name){
-		
+		/*A Shop profile for all user can access to this 
+		To check that shop user is connect to shop
+
+		*/
 		$nameshops = DB::select('select * from shop where Nameshop = ?', array($name));
 		$menus = DB::select('select * from menu where Nameshop = ?', array($name));
 		$comments = DB::select('select * from review where Nameshop = ?', array($name));

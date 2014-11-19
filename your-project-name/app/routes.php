@@ -223,7 +223,7 @@ Route::get('/Reserve/Fail',array(
 	'as' => 'Reserve-fail',
 	'uses' => 'ReserveController@failReserve'
 ));
-Route::post('/setReserve1', array(
+Route::post('/setReserve', array(
 	'as' => 'Reserve-add', 
 	'uses' => 'ReserveController@reReserve'
 ));

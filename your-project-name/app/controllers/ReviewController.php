@@ -6,6 +6,7 @@ class ReviewController extends BaseController {
 		return View::make('Form.ReviewForm');	
 	}
 	public function postReview(){
+		/*this function is to review the shop */
 		$name = Session::get('name');
 		$comment = Input::get('comment');
 		$Nameshop = Session::get('nameshop');
